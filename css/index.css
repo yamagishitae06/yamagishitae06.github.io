@@ -1,0 +1,570 @@
+@charset "utf-8";
+/* CSS Document */
+
+/******************************************/
+/**************************** 全画面共通 **/
+/******************************************/
+
+/******loading******/
+/*loader*/
+
+.modal-img-box p{
+	text-align:right;
+}
+
+.loader {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--white);
+  z-index: 555;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*loader_nime*/
+.flower-loader:not(:required) {
+  overflow: hidden;
+  position: relative;
+  text-indent: -9999px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: var(--loader-core);
+  border-radius: 100%;
+  -moz-box-shadow: white 0 0 15px 0, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px;
+  -webkit-box-shadow: white 0 0 15px 0, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px;
+  box-shadow: white 0 0 15px 0, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px;
+  -moz-animation: flower-loader 5s infinite ease-in-out;
+  -webkit-animation: flower-loader 5s infinite ease-in-out;
+  animation: flower-loader 5s infinite ease-in-out;
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+@-moz-keyframes flower-loader {
+  0% {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -moz-box-shadow: white 0 0 15px 0, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px;
+    box-shadow: white 0 0 15px 0, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px;
+  }
+  50% {
+    -moz-transform: rotate(1080deg);
+    transform: rotate(1080deg);
+    -moz-box-shadow: white 0 0 15px 0, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px;
+    box-shadow: white 0 0 15px 0, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px;
+  }
+}
+@-webkit-keyframes flower-loader {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-box-shadow: white 0 0 15px 0, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px;
+    box-shadow: white 0 0 15px 0, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px;
+  }
+  50% {
+    -webkit-transform: rotate(1080deg);
+    transform: rotate(1080deg);
+    -webkit-box-shadow: white 0 0 15px 0, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px;
+    box-shadow: white 0 0 15px 0, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px;
+  }
+}
+@keyframes flower-loader {
+  0% {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -moz-box-shadow: white 0 0 15px 0, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px;
+    -webkit-box-shadow: white 0 0 15px 0, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px;
+    box-shadow: white 0 0 15px 0, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px;
+  }
+  50% {
+    -moz-transform: rotate(1080deg);
+    -ms-transform: rotate(1080deg);
+    -webkit-transform: rotate(1080deg);
+    transform: rotate(1080deg);
+    -moz-box-shadow: white 0 0 15px 0, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px;
+    -webkit-box-shadow: white 0 0 15px 0, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px;
+    box-shadow: white 0 0 15px 0, var(--loader-petal) 12px 12px 0 4px, var(--loader-petal) -12px 12px 0 4px, var(--loader-petal) -12px -12px 0 4px, var(--loader-petal) 12px -12px 0 4px;
+  }
+}
+
+
+/******************************************/
+/*****************************smartphone **/
+/******************************************/
+@media screen and (min-width: 0px) , print{
+
+
+/*phone　FirstView*/
+
+
+#FirstView-box{
+	width:100%;
+	text-align: center;
+	height: 100vh;
+}
+	
+	#FirstView_inbox{
+		width: 100%;
+		height: 50vh;
+		margin:25vh 0;
+	}
+
+#FirstView-img{
+		display: block;
+		width: 100px;
+		height: auto;
+		margin: 10px auto;
+		border-radius: 10%;
+		animation: fadein01 1s ease;
+	}
+	
+#FirstView-txt{
+	width: 100%;
+	margin: auto;
+	font-size: var(--fs-2xl);
+	font-weight: bold;
+	line-height: 60px;
+	animation: fadein01 3s ease;
+	}
+	
+	#sub-txt{
+		font-size: var(--fs-md);
+		font-weight: 600;
+	}
+/*--------------------------------
+phone first
+---------------------------------*/
+#first {
+	margin-bottom: 25vh;
+}  	
+
+.first-txt{
+	width: 100%;
+	margin: 50px auto 0 auto;
+	font-size: var(--fs-md);
+	line-height: 2;
+	text-align: center;
+}
+	
+
+/*--------------------------------
+phone profile
+---------------------------------*/
+	.profile .contents-box{
+		margin: auto;
+	}
+
+.profile-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+	text-align:center;
+  max-width: 300px;
+  padding: var(--sp-md);
+	margin:auto;
+  aspect-ratio: 1/1.654;
+  background-color: var(--white);
+  box-shadow: var(--item-shadow);
+  border-radius: var(--rd-md);
+}
+	
+.profile-card img{
+	margin-bottom: 20px;
+  border-radius: var(--rd-sm);
+}
+
+.profile-name {
+	font-size: var(--fs-l);
+	font-weight: 600;
+	text-align: center;
+	color: var(--accent-grey);
+}
+
+.profile-name-sub {
+	font-size: var(--fs-l);
+	font-weight: 400;
+	color: var(--text-sub);;
+}
+	
+.profile-txt {
+  text-align: start;
+	margin: 10px;
+	position: relative;
+}
+
+.profile-txt::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 6rem;
+	background: linear-gradient(transparent 0%, var(--white) 100%);
+	pointer-events: none;
+}
+
+	#profile-link{
+		text-align: center;
+		margin: 80px auto 0 auto;
+	}
+	
+	#profile-link img{
+		margin: auto 20px;
+		width: 40px;
+		height: 40px;
+	}
+
+	section.profile .more-link {
+		background-color: var(--primary-orange);
+	}
+
+	section.profile .more-link::after {
+		background-color: var(--white);
+	}
+
+	section.profile .more-link::before {
+		color: var(--white);
+	}
+
+	section.profile .more-link:hover::before {
+		color: var(--text-main);
+	}
+
+
+/*--------------------------------
+ phone Works
+---------------------------------*/
+.works{
+	width:100%;
+}
+
+	img{
+		border: none;
+	}
+
+.container-workstxt{
+	display:grid;
+	padding:3%;
+	grid-template-columns:repeat(12, 1fr); /*グリッドの分割数、幅*/
+	grid-template-rows:repeat 500px ; 
+	margin:0 auto;
+}
+
+/*個別グリッド*/
+#w01{
+	grid-column: 12 span;
+  grid-row: 2 span;
+}
+	
+//#w04{
+	grid-column-start:1 ;
+	grid-column-end: 6;
+  grid-row: 1 span;
+}
+	
+//#w05{grid-column-start:1 ;
+	grid-column-end: 6;
+  grid-row-start: 4;
+	grid-row-end: 5;
+}
+	
+	
+#w06{
+	grid-column:12 span;
+	grid-row: 2 span;
+	}
+
+#freelance-activity .more-link:before {
+content: "works";
+}
+
+/*==================================================
+phone モーダルcss
+===================================*/
+
+
+
+
+/*--------------------------------
+phone freelance-activity
+---------------------------------*/
+.freelance-activity{
+	width:100%;
+}
+
+.container-freelance-activity-txt {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	text-align: center;
+	/* 親の幅を無視して画面いっぱい（ビューポート幅）にする */
+    width: 100vw;
+	/* 親要素の中央に配置するためのネガティブマージン（親が中央配置の場合） */
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+	margin-bottom: var(--sp-md);
+    overflow: hidden; /* 全体の横揺れを防止 */
+}
+
+.freelance-activity-wrap {
+	width: fit-content;
+	display: flex;
+	align-items: stretch;
+    overflow-x: auto;      /* ここでスクロールを制御 */
+    scroll-snap-type: x mandatory;
+	/* スクロールバーを非表示にする */
+    -ms-overflow-style: none;    /* IE/Edge用 */
+    scrollbar-width: none;       /* Firefox用 */
+	/* 左右に余白（8の倍数）を入れて、最初のステップが端に寄りすぎないようにする */
+}
+
+/* Chrome/Safariでスクロールバーを非表示にする */
+.freelance-activity-wrap::-webkit-scrollbar {
+    display: none;
+}
+
+.freelance-activity-item {
+	flex-grow: 1;
+}
+
+.step {
+  white-space: nowrap;
+	font-size: var(--fs-md);
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.number{
+	color:var(--primary-orange);
+	font-size: var(--fs-l);
+}
+
+.freelance-activity-img {
+  display: flex;
+}
+
+.freelance-activity-img img {
+	max-width: 100px;
+  margin: auto;
+}
+
+.freelance-activity-name {
+	text-align: center;
+	font-size: var(--fs-sm);
+	font-weight: bold;
+	margin-top: var(--sp-xs);
+	flex-grow: 1;
+}
+
+.freelance-activity-info {
+  font-size: var(--sp-xs);
+  margin:15px 0;
+}
+	
+#freelance-activity-infotxt {
+	width: 100%;
+	margin: 0 auto var(--sp-md) auto;
+	text-align: center;
+	font-size: var(--fs-md);
+	line-height: 2;
+}
+
+.arrow-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+}
+	
+.arrow {
+    position: relative;
+    display: inline-block;
+    color: var(--text-black);
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 15px;
+	width: 15px;
+	height: 15px;
+}
+
+.arrow::before,
+.arrow::after{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    content: "";
+    vertical-align: middle;
+}
+.sample5-3::before{
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: var(--primary-orange);
+}
+.sample5-3::after{
+    left: 5px;
+    width: 3px;
+    height: 3px;
+    border-top: 1px solid var(--white);
+    border-right: 1px solid var(--white);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/*--------------------------------
+phone contact
+---------------------------------*/
+#contact-txt-02{
+	text-align: center;
+	margin: auto;
+}	
+
+}
+
+
+/******************************************/
+/***********************************  PC **/
+/******************************************/
+@media screen and (min-width: 1025px) , print{
+
+
+/*FirstView*/
+#FirstView-img{
+		display: block;
+		width: 100px;
+		height: auto;
+		margin: 10px auto;
+		border-radius: 10%;
+		animation: fadein01 6s ease;
+	}
+	
+#FirstView-txt{
+		width: 100%;
+		margin: auto;
+	font-size: var(--fs-2xl);
+	font-weight: bold;
+	line-height: 60px;
+	animation: fadein01 3s ease;
+	}
+	
+	#sub-txt{
+		font-size: var(--fs-md);
+		font-weight: 600;
+	}
+
+/*--------------------------------
+ PC Works
+---------------------------------*/
+.works{
+	width:100%;
+}
+
+	img{
+		border: none;
+	}
+
+.container-workstxt{
+	display:grid;
+	padding:3%;
+	grid-template-columns:repeat(12, 1fr); /*グリッドの分割数、幅*/
+	grid-template-rows:repeat 500px ; 
+	margin:0 auto;
+}
+
+.works-item {
+	grid-column: 3 span;/*分割されたうち、4つ*/
+	grid-row: 1 span;
+  margin-right: 5%;
+  margin-bottom: 40px;
+}
+
+.works-info {
+  font-size: var(--fs-sm);
+  margin:10px 0;
+}
+
+/*個別グリッド*/
+#w01{
+	grid-column: 9 span;
+  grid-row: 2 span;
+}
+	
+#w04{
+	grid-column-start:1 ;
+	grid-column-end: 6;
+  grid-row: 1 span;
+}
+	
+#w05{grid-column-start:1 ;
+	grid-column-end: 6;
+  grid-row-start: 4;
+	grid-row-end: 5;
+}
+	
+	
+#w06{
+	grid-column-start:6 ;
+	grid-column-end: 13;
+	grid-row: 2 span;
+	}
+	
+	
+/*--------------------------------
+PC freelance-activity
+---------------------------------*/
+.step{
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.freelance-activity-name {
+	text-align: center;
+	font-size: var(--fs-md);
+	font-weight: bold;
+	margin-top: var(--sp-xs);
+}
+
+.freelance-activity-info {
+  font-size: var(--fs-sm);
+  margin:15px 0;
+}
+
+.sample5-3::before{
+    width: 18px;
+    height: 18px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: var(--primary-orange);
+}
+.sample5-3::after{
+    left: 4px;
+    width: 5px;
+    height: 5px;
+    border-top: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+}
+
+	
+
+
+/******************************************/
+/********************************END  PC **/
+/******************************************/

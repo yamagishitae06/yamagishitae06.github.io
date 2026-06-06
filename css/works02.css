@@ -1,0 +1,171 @@
+@charset "utf-8";
+/* CSS Document */
+
+.modal-img-box p{
+	text-align:right;
+}
+
+.nowpage{
+	color: var(--primary-orange);
+}
+
+
+.contact-link_txt{
+	font-size: var(--fs-md);
+	font-weight: 600;
+	width: 200px;
+	text-align: center;
+	margin:0 auto 100px auto;
+	color: var(--text-grey);
+}
+
+.contact-link_txt a{
+	font-size: var(--fs-md);
+	font-weight: bold;
+}
+
+
+/******************************************/
+/*****************************smartphone **/
+/******************************************/
+@media screen and (min-width: 0px) , print{
+/*--------------------------------
+ smartphone Works
+---------------------------------*/
+.works{
+	width:100%;
+}
+
+.gnavi-wrap {
+	width: 100%;
+}
+
+.gnavi-box {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	gap: 0;
+	text-align: center;
+	margin-bottom: var(--sp-md);
+}
+
+.gnavi-box .gnavi-title {
+	font-weight: bold;
+	text-align: center;
+	color: var(--text-grey-light);
+	margin-bottom: var(--sp-xs);
+}
+
+.gnavi-box .gnavi-subtitle {
+	font-weight: 400;
+	color: var(--text-grey-light);
+	margin-bottom: var(--sp-xs);
+}
+	
+.works ul.gnavi {
+	justify-content: space-between;
+	text-align: center;
+	gap: var(--sp-xs);
+}
+	
+.works ul.gnavi li {
+	font-size: var(--fs-md);
+	margin: 10px auto;
+	}
+	
+.category {
+	padding-bottom: var(--sp-2xl);
+}
+
+.category-title {
+	text-align: center;
+}
+
+.category-title p{
+	font-size: var(--fs-md);
+	font-weight: bold;
+	color: var(--text-grey-light);
+}
+
+.category-title h4{
+	font-size: var(--fs-xl);
+	font-weight: bold;
+	color: var(--primary-orange);
+	margin-bottom: var(--sp-md);
+}
+
+
+/*グリッドレイアウト*/
+.container-workstxt{
+	display:grid;
+	padding:3%;
+	/*グリッドの分割数、幅*/
+	grid-template-rows:100px;
+	grid-template-columns:repeat(12, 1fr); 
+	margin:0 auto;
+}
+
+#Graphic ul {
+	display: flex;
+	width: 30%;
+	justify-content: space-between;
+	text-align: center;
+	margin: 30px auto 30px;
+	}
+
+#Graphic ul li{
+	font-size: var(--fs-md);
+	margin: 0 auto;
+	}
+}
+
+/******************************************/
+/***********************************  PC **/
+/******************************************/
+@media screen and (min-width: 1025px) , print{
+
+/*--------------------------------
+ PC Works
+---------------------------------*/
+.works{
+	width:100%;
+}
+
+.works ul.gnavi {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	text-align: center;
+}
+
+.container-workstxt{
+	display:grid;
+	padding:3%;
+	/*グリッドの分割数、幅*/
+	grid-template-rows:100px;
+	grid-template-columns:repeat(12, 1fr); 
+	margin:0 auto;
+}
+
+.works-item {
+	grid-column: 4 span;/*分割されたうち、4つ*/
+	grid-row: 5 span;
+	margin-right: 5%;
+	margin-bottom: 40px;
+	position: relative;
+}
+
+
+.works-info {
+  font-size: var(--fs-sm);
+  margin:10px 0;
+}
+
+}
+
+
+
+/******************************************/
+/********************************END  PC **/
+/******************************************/

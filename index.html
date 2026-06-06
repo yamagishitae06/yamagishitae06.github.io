@@ -1,0 +1,371 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>TAE's PORTFOLIO</title>
+<link rel=”apple-touch-icon” href=”./apple-touch-icon.png” sizes=”180×180″>
+<link rel=”icon” type=”image/x-icon” href=”./favicon.ico”>
+<!--CSS-->
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+<!--reset CSS-->   
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
+<!--共通CSS-->
+    <link href="css/common.css" rel="stylesheet" type="text/css" />
+	  <link href="css/anime.css" rel="stylesheet" type="text/css" />
+    
+<!--独自CSS-->
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+<!--END CSS-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+ <!--font-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<!--END font-->
+</head>
+<!--END head-->
+
+<body onload="Settoday();">	
+<!--loader-->
+<!-- <div class="loader">
+  <div class="flower-loader"></div>
+</div> -->
+<!--/loeder-->
+<div id="cursor"></div>
+<div id="stalker"></div>
+<!-- header -->
+<header id="header-wrap"></header>
+<script>
+  fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('header-wrap').innerHTML = data;
+    });
+</script>
+<!-- /header -->
+<main>
+  <div class="shape-container">
+    <div class="equilateral-triangle shape" id="triangle01"></div>
+    <div class="equilateral-triangle shape" id="triangle02"></div>
+    <div class="batu shape"></div>
+    <div class="batu02 shape"></div>
+    <div class="square01 shape"></div>
+    <div class="square02 shape"></div>
+    <div class="perfect-circle01 shape"></div>
+    <div class="perfect-circle02 shape"></div>
+    <div class="perfect-circle03 shape"></div>
+    <div class="perfect-circle04 shape"></div>
+  </div>
+  <!--/.shaoe-sontainer-->
+	<div id="FirstView-box">
+		<div id="FirstView_inbox">
+		 <img src="img/OTAE_logo.png" id="FirstView-img">
+		<div id="FirstView-txt"><p class="orange">TAE YAMAGISHI</p>
+    <p id="sub-txt">FREELANCE DESIGNER PORTFORIO SITE</p></div>
+    </div><!--END #FirstView_inbox-->
+    </div><!--END #FirstView-box-->
+    <div class="scroll-snap">
+	    <!--.first-->
+    <section class="first section fuwa-animation" id="first">
+        <div class="contents-box">
+          <div class="title-group">
+            <h2 class="title">First</h2>
+            <h3>はじめに</h3>
+          </div>
+			<div  class="first-txt">
+				<p class="first-txt">当サイトはTAEがポートフォリオ用に<br>
+<span class="bold">すべて個人で制作した</span>サイトです。<br><span class="mini">何か不備がありましたらご連絡ください。</span>
+</p>
+				</div><!-- /#profile-card-->
+        </div><!-- /box-->
+        </section>
+      <!-- /.first -->
+		
+    <!-- profile -->
+    <section class="profile section fuwa-animation" id="profile">
+        <div class="contents-box">
+          <div class="title-group">
+            <h2 class="title">Profile</h2>
+            <h3>自己紹介</h3>
+          </div>
+          <div  class="profile-card">
+            <img src="img/似顔絵_TEAO.png" width="150px" height="auto" alt="TAE YAMAGISHI 似顔絵">
+                  <p class="profile-name">TAE YAMAGISHI</p>
+                  <p class="profile-name-sub">山岸多絵</p>
+            <p class="profile-txt">1998年6月25日生まれ&nbsp;宮城県出身<br>
+					4年制美術大学卒業。<br>
+				<span>
+        現在はアプリ制作会社のマーケティング課の主任として、デザインだけではなくマーケティング施策立案、新機能の立案など幅広く業務を行っています。<br>趣味はゲームに加え、デザイン・イラスト・アニメーションなどクリエイティブ全般。副業ではこれらのクリエイティブ分野で
+        </span></p>
+        <div class="more-box">
+          <a href="profile.html" class="more-link">
+          </a>
+        </div>
+      </div>
+      <!-- /#profile-card-->
+    </div
+    ><!-- /box-->
+    </section>
+  <!-- /profile -->
+
+<!-- works -->
+<section class="works section fuwa-animation" id="works">
+  <div class="contents-box">
+    <div class="title-group">
+      <h2 class="title">Works</h2>
+      <h3>制作実績</h3>
+    </div>
+    <p style="text-align: center; margin-bottom: var(--sp-lg);">
+      デザイン、コーディング、イラストなど、<br class="br-sp">
+      様々なプロジェクトに携わった実績を掛載しています。
+    </p>
+    <div id="more" class="more-box">
+        <a href="works.html?category=works-personal-illustration" class="more-link">
+        </a>
+      </div>
+  </div>
+</section>
+<!-- /works -->
+      
+<!-- freelance-activity -->
+    <section class="freelance-activity section fuwa-animation" id="freelance-activity">
+        <div class="contents-box">
+          <div class="title-group">
+            <h2 class="title">Freelance activity</h2>
+            <h3>フリーランス活動</h3>
+          </div>
+          <div class="fuwa-animation" id="freelance-activity-infotxt">
+            <span>フリーランスでイラストやグラフィックデザインなどの</span><br class="br-sp"><span>制作依頼を受け、</span><span>活動しています。</span>
+            <br><span>全て一人で一貫して対応しております。</span>
+          </div>
+          <div  class="container-freelance-activity-txt">
+            <div  class="freelance-activity-wrap">
+              <!--.freelance-activity-item-->
+              <div class="freelance-activity-item item">
+              <p class="step">STEP <span class="number">1</span></p>
+                    <p class="freelance-activity-img"><img src="img/STEP1.png" alt="" /></p>
+                    <p class="freelance-activity-name">お問い合わせ</p>
+                    <p class="freelance-activity-info"></p>
+              </div>
+              <!--/.freelance-activity-item-->
+              <div class="arrow-box">
+                <span class="arrow sample5-3"></span>
+              </div>
+              <!--.freelance-activity-item-->
+              <div class="freelance-activity-item item">
+                <p class="step">STEP <span class="number">2</span></p>
+                <p class="freelance-activity-img"><img src="img/STEP2.png" alt="" /></p>
+                <p class="freelance-activity-name">お見積り<br>ヒアリング</p>
+                  <p class="freelance-activity-info"></p>
+              </div>
+              <!--/.freelance-activity-item-->
+              <div class="arrow-box">
+                <span class="arrow sample5-3"></span>
+              </div>
+              <!--.freelance-activity-item-->
+              <div class="freelance-activity-item item">
+                <p class="step">STEP <span class="number">3</span></p>
+                <p class="freelance-activity-img"><img src="img/STEP3.png" alt="" /></p>
+                <p class="freelance-activity-name">ラフ確認</p>
+                <p class="freelance-activity-info"></p>
+              </div>
+              <!--/.freelance-activity-item-->
+              <div class="arrow-box">
+                <span class="arrow sample5-3"></span>
+              </div>
+              <!--.freelance-activity-item-->
+              <div class="freelance-activity-item item">
+                <p class="step">STEP <span class="number">4</span></p>
+                <p class="freelance-activity-img"><img src="img/STEP4.png" alt="" /></p>
+                <p class="freelance-activity-name">完成品確認</p>
+                <p class="freelance-activity-info"></p>
+              </div>
+              <!--/.freelance-activity-item-->
+              <div class="arrow-box">
+                <span class="arrow sample5-3"></span>
+              </div>
+              <!--.freelance-activity-item-->
+              <div class="freelance-activity-item item">
+                <p class="step">STEP <span class="number">5</span></p>
+                <p class="freelance-activity-img"><img src="img/STEP5.png" alt="" /></p>
+                <p class="freelance-activity-name">お支払い</p>
+                <p class="freelance-activity-info"></p>
+              </div>
+              <!--/.freelance-activity-item-->
+              <div class="arrow-box">
+                <span class="arrow sample5-3"></span>
+              </div>
+              <!--.freelance-activity-item-->
+              <div class="freelance-activity-item item">
+                <p class="step">STEP <span class="number">6</span></p>
+                <p class="freelance-activity-img"><img src="img/STEP6.png" alt="" /></p>
+                <p class="freelance-activity-name">納品</p>
+                <p class="freelance-activity-info"></p>
+              </div>
+            <!--/.freelance-activity-item-->
+          </div>
+          </div><!-- /#container-freelance-activity-txt-->
+			<div class="fuwa-animation" id="freelance-activity-infotxt"><h3 class="bold orange">『どんなデザインがいいかわからない』<br>
+『自分に似合うデザインが欲しい』<br>
+				『新しいことを始めたい』</h3><br>
+そんな方々のお悩みを解決し、形にするデザイナーです。<br>
+				<span class="bold">イラスト</span>から<span class="bold">グラフィック</span>、<br class="br-sp"><span class="bold">アニメーション</span><span>まで幅広くご対応ができるので</span>
+				<br>趣味や個人的な目的でイラストやデザインが欲しい方の為に、
+			<br><span class="bold">「まずは気軽に相談」</span>のできるクリエイターを目指し<br>日々勉強を重ねています。</div>
+        </div><!-- /box-->
+         <div id="more" class="more-box">
+          <a href="works.html?category=works-personal-illustration" class="more-link">
+          </a>
+        </div>
+      </section>
+<!-- /freelance-activity -->
+
+<!-- contact -->
+    <section class="contact section fuwa-animation" id="contact">
+        <div class="contents-box">
+          <div class="title-group">
+            <h2 class="title">Contact</h2>
+            <h3>お問い合わせ</h3>
+          </div>
+          <div id="formWrap">
+            <div id="contact-txt-02">
+              <p>下記アドレスにご連絡ください<br>yamagishitae06@gmail.com</p>
+            </div>
+          </div>
+        </div><!--/.contents-box-->
+ </section>
+<!-- /Ccontact -->
+  <div id="page-top"><a href="#"><img src="img/TOP_link.png"></a></div>
+	</div><!--/.scroll-snap-->
+<!-----  モーダル ----->
+<div class="modal-wrapper" id="modal-01">
+  <a href="#!" class="modal-overlay"></a>
+  <div class="modal-window">
+	  <p class="modal_title">レスポンシブデザインサイト</p>
+    <div class="modal-content">
+      	<div class="modal-img-box"><img src="img/web_cocoro_PC.png"><img src="img/iPhone.png"></div>
+		<p class="bold">WebDesign / AdobeDreamweaver</p>
+<p>架空のパン屋をイメージしたレスポンシブデザインのウェブサイト<br>
+		  ターゲットを社会人や主婦に絞り、落ち着いた大人っぽい雰囲気に。
+		落ち着いた茶色とモノクロベースに、差し色の黄色でメリハリのあるデザインです。
+      </p>
+    </div>
+    <a href="#!" class="modal-close"><i class="far fa-times-circle"></i></a>
+  </div>
+</div>
+<!--/モーダル-->
+<!-- モーダル-->
+<div class="modal-wrapper" id="modal-02">
+  <a href="#!" class="modal-overlay"></a>
+  <div class="modal-window">
+	  <p class="modal_title">母の日ウェブバナー広告</p>
+    <div class="modal-content">
+      	<div class="modal-img-box">
+			<img src="img/graphic/GraphicDesignSAMPLE-14.png">
+		</div>
+		<p class="bold">Banner / AdobeIllustrator</p>
+<p>架空の母の日のギフトショップバナー広告<br>
+	すっきりと大人っぽく、女性らしさを意識したデザインです。</p>
+    </div>
+    <a href="#!" class="modal-close"><i class="far fa-times-circle"></i></a>
+  </div>
+</div>
+<!--/モーダル -->
+<!-- モーダル -->
+<div class="modal-wrapper" id="modal-03">
+  <a href="#!" class="modal-overlay"></a>
+  <div class="modal-window">
+	  <p class="modal_title">デフォルメイラスト</p>
+    <div class="modal-content">
+      	<div class="modal-img-box">
+			<img src="img/illust/IllustSAMPLE-7.png">
+			<img src="img/illust/IllustSAMPLE-8.png">
+		</div>
+		<p class="bold">Illustration / Procreate</p>
+<p>デフォルメサイズのイラスト<br>
+	柔らかく、かわいらしい雰囲気を意識して制作させていただきました。</p>
+    </div>
+    <a href="#!" class="modal-close"><i class="far fa-times-circle"></i></a>
+  </div>
+</div>
+<!--/モーダル -->
+<!--/モーダル -->
+<div class="modal-wrapper" id="modal-04">
+  <a href="#!" class="modal-overlay"></a>
+  <div class="modal-window">
+	  <p class="modal_title">イベント配布カード</p>
+    <div class="modal-content">
+      	<div class="modal-img-box">
+			<img src="img/graphic/GraphicDesignSAMPLE-16.png">
+		</div>
+		<p class="bold">Banner / AdobeIllustrator</p>
+<p>ボードゲームカフェでのイベント用配布カード<br>
+	店のイメージカラーである赤をベースに、紙吹雪などでめでたい雰囲気に。<br>
+記念に取っておいてもらえるようなデザインを意識しました。</p>
+    </div>
+    <a href="#!" class="modal-close"><i class="far fa-times-circle"></i></a>
+  </div>
+</div>
+<!--/モーダル -->
+<div class="modal-wrapper" id="modal-05">
+  <a href="#!" class="modal-overlay"></a>
+  <div class="modal-window">
+	  <p class="modal_title">SNS用画像 店内POP</p>
+    <div class="modal-content">
+      	<div class="modal-img-box">
+			<img src="img/graphic/GraphicDesignSAMPLE-24.png">
+		</div>
+		<p class="bold">Banner / AdobeIllustrator</p>
+<p>ボードゲームカフェでの店内POP兼SNS画像<br>
+	学生向け割引キャンペーンのPOP。<br>
+学生らしさを黒板風デザインで表現しました。</p>
+    </div>
+    <a href="#!" class="modal-close"><i class="far fa-times-circle"></i></a>
+  </div>
+</div>
+<!--/モーダル -->
+<!-- モーダル -->
+<div class="modal-wrapper" id="modal-06">
+  <a href="#!" class="modal-overlay"></a>
+  <div class="modal-window">
+	  <p class="modal_title">オリジナルキャラクターデザイン</p>
+    <div class="modal-content">
+      	<div class="modal-img-box">
+			<img src="img/illust/IllustSAMPLE-1.png">
+            <img src="img/illust/IllustSAMPLE-2.png">
+            <p>ラフデザイン</p>
+		</div>
+		<p class="bold">Illustration / Procreate</p>
+<p>
+３人組オリジナルキャラクターデザイン＆イラスト<br>
+３人組であることを意識し、『共通要素』『ずらし要素』を加え統一感のあるデザインを作りました。</p>
+    </div>
+    <a href="#!" class="modal-close"><i class="far fa-times-circle"></i></a>
+  </div>
+</div>
+<!--/モーダル-->
+<!--/////モーダル/////-->
+</main>
+<!--END main-->
+<footer>
+	<div id="footer-box">
+        <p id="copyright">&copy;TAE YAMAGISHI</p>
+    </div>
+</footer>
+<!--END footer-->
+<!--script-->
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<!--IE11用-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+<!--自作のJS-->
+<script type="text/javascript" src="js/function.js"></script>
+<!--END script-->
+
+</body>
+</html>

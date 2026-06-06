@@ -1,0 +1,844 @@
+@charset "utf-8";
+/* CSS Document */
+/** 全画面共通 **/
+:root {
+	/* --- Colors --- */
+	--primary-orange: #EF831A;    /* メインアクセント（moreボタン、Step番号など） */
+	--accent-grey: #737d6d;     /* プロフィールタイトルなど */
+	--text-main: #333333;
+	--text-sub: #939393;        /* 資格リンクや補足テキスト */
+	--white: #FFFFFF;
+	--modal-overlay: rgba(0, 0, 0, 0.8);
+	--bg-border: #f7f7f7;
+
+	/* --- Additional Colors --- */
+	--text-dark: #2b2e38;        /* 濃いグレイ（モーダルホバーなど） */
+	--text-grey: #828282;        /* グレイ（副見出しなど） */
+	--text-grey-light: #B0B0B0;  /* 薄いグレイ（補足テキスト） */
+	--text-black: #000000;       /* 黒（ハンバーガーメニューなど） */
+	--bg-grey: #CCC;             /* グレイ背景（フッターなど） */
+
+	/* --- Loader Colors --- */
+	--loader-core: #e96;
+	--loader-petal: #fd8;
+
+	/* Layout */
+	--header-height: 50px;
+  
+	/* Fonts */
+	--font-main: 'Zen Maru Gothic', sans-serif;;
+
+	/* --- Font Sizes --- */
+	--fs-2xl: 4.0rem;    /* huge */
+    --fs-xl:  2.4rem;    /* title */
+    --fs-lg:  2.1rem;    /* step */
+	--fs-l:  1.5rem;    /* subtitle */
+    --fs-md:  1.0rem;    /* body (基準) */
+    --fs-sm:  0.833rem;  /* info */
+
+	/* 8の倍数スケール */
+	--sp-xs: 0.5rem;  /* 8px */
+	--sp-sm: 1.0rem;  /* 16px */
+	--sp-md: 1.5rem;  /* 24px */
+	--sp-lg: 2.0rem;  /* 32px */
+	--sp-xl: 4.0rem;  /* 64px */
+	--sp-2xl: 5.0rem; /* 80px */
+	--sp-3xl: 6.0rem; /* 96px */
+
+	/* 角丸の定義 (8の倍数) */
+    --rd-sm: 8px;   /* ボタンや小さなタグ用 */
+    --rd-md: 16px;  /* カードやセクションの背景用 */
+
+	/* shadow */
+	--item-shadow: 0px 4px 4px rgb(0 0 0 / 16%);
+
+	/* --- Transitions --- */
+	--transition-base: 0.4s ease;
+}
+
+html{
+	height:100%;
+	width:100%;
+	font-size: 16px;
+	scroll-behavior: smooth;
+	scroll-padding-top: var(--header-height);
+	-webkit-overfreelance-activity-scrolling: touch;
+	cursor: none;
+}
+
+/* 固定ヘッダーを考慮したアンカースクロール調整 */
+[id] {
+	scroll-margin-top: var(--header-height);
+}
+
+body {
+	height:100%;
+	width:100vw;
+	font-family: var(--font-main);
+	line-height: 1.5;
+	color:var(--text-main);
+/* 方眼紙模様に必須のスタイル */
+  background-image: linear-gradient(0deg, transparent calc(100% - 1px),/* 0 ~ (100% - 1px)までを透明に */
+   var(--bg-border) calc(100% - 1px)),/* (100% - 1px) ~ 100%までを薄い灰色に */
+                    linear-gradient(90deg, transparent calc(100% - 1px), var(--bg-border)  calc(100% - 1px));
+  background-size: 50px 50px;/*1マスのサイズ*/
+  background-repeat: repeat;
+  background-position: center center;/*マス目の起点*/
+}
+
+main {
+	display: block;
+	min-width: 200px;
+	max-width: 1080px;
+	margin: auto;
+	padding-top: var(--header-height);
+}
+
+a{
+	text-decoration: none;
+	font-weight:bold;
+	color: var(--text-main);
+}
+
+a:hover {
+	
+	opacity:0.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+  border-style: none;
+}
+
+span {
+	display: inline-block;
+}
+
+h3 {
+	font-size: var(--fs-l);
+	font-weight: 500;
+	text-align: center;
+	color: var(--text-sub);
+}
+
+h4{
+	font-size: var(--fs-l);
+	font-weight: 500;
+	text-align: center;
+}
+
+h5{
+	font-size: var(--fs-md);
+	font-weight: 500;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+
+/******カーソル要素******/
+#cursor{
+  position: fixed;
+  /*丸の大きさと色の指定*/
+  background: var(--white);
+  border-radius:10px;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;/*真ん中にくるようにマイナスマージンで調整*/
+  z-index: 1000;/*一番手前に来るように*/
+  pointer-events: none;/*クリックできなくなるのを防ぐため。noneで対応*/
+  opacity: 0;
+  box-shadow:0 0 5px 3px var(--primary-orange);
+}
+
+/*ちょっと遅れてついてくるストーカー要素*/
+#stalker{
+  position: fixed;
+  /*丸の大きさと色の指定*/
+  background: rgba(239,131,26, .2);
+  width: 60px;
+  height: 60px;
+  border-radius:30px;
+  margin: -30px 0 0 -30px;/*真ん中にくるようにマイナスマージンで調整*/
+  z-index: 999;/*カーソルの後ろに来るように*/
+  pointer-events: none;/*クリックできなくなるのを防ぐため。noneで対応*/
+  opacity: 0;
+}
+
+.br-sp{
+	display:none;
+}
+
+/*TOPlink*/
+#page-top{
+	width:50px;
+	height: auto;
+	text-align:center;
+	padding: 0px;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	opacity: 0.5;
+}
+
+#page-top:hover{
+	transform: scale(1.2);
+	opacity: 1;
+}
+
+/*--------------------------------
+ レイアウト
+---------------------------------*/
+.bold{
+	font-weight: bold;
+}
+
+.mini{
+	font-size: var(--fs-sm);
+}
+
+.orange{
+	color: #EF831A;
+}
+
+
+section {
+	margin-bottom: var(--sp-3xl);
+}
+
+.contents-box{
+	width: 90%;
+	margin: 0 auto var(--sp-xl) auto;
+}
+
+.marker-orange{
+background:linear-gradient(transparent 70%, var(--primary-orange) 70%);
+}
+
+.marker-blue{
+background:linear-gradient(transparent 70%, #317692 70%);
+}
+
+.marker-yellow{
+background:linear-gradient(transparent 70%, #EDC01B 70%);
+}
+
+/*--------------------------------
+/レイアウト
+---------------------------------*/
+/*図形*/
+.shape-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+
+.shape{
+	animation:rotation 15s linear infinite;
+	z-index: -5;
+	position: fixed;
+	opacity: 0.5;
+}
+
+/*left:2%~10%*/
+.equilateral-triangle {
+	z-index: -5;
+	position: fixed;
+}
+
+
+#triangle01{
+	top:20%;
+	left: 5%;
+	border-bottom: 20px solid #EDC01B; 
+	border-right: 12px solid transparent; /* 左辺の長さ */
+  border-left: 12px solid transparent; /* 右辺の長さ */
+	transform: rotate(45deg);
+}
+
+
+#triangle02{
+	top:82%;
+	right: 5%;
+	border-bottom: 25px solid #317692; 
+	border-right: 15px solid transparent; /* 左辺の長さ */
+  border-left: 15px solid transparent; /* 右辺の長さ */
+	transform: rotate(0deg);
+}
+
+.batu {
+	top: 60%;
+	left: 3%;
+	width: 5px; /* 縦棒の幅 */
+	height: 20px; /* 縦棒の長さ */
+	background: #119D63; /* 縦棒の色 */
+	transform: rotate(-40deg); /* 角度 */
+}
+.batu::after {
+	content: "";
+	position: absolute;
+	top: 0px; /* 横棒のy位置 */
+	left: 0px; /* 横棒のX位置 */
+	width: 5px; /* 横棒の長さ */
+	height: 20px; /* 横棒の幅 */
+	transform: rotate(90deg); /* 角度 */
+	background: #119D63; /* 横棒の色 */
+}
+	
+.batu02 {
+	top: 40%;
+	right: 5%;
+	width: 5px; /* 縦棒の幅 */
+	height: 20px; /* 縦棒の長さ */
+	background: #E64112; /* 縦棒の色 */
+	transform: rotate(0deg); /* 角度 */
+}
+.batu02::after {
+	content: "";
+	position: absolute;
+	top: 0px; /* 横棒のy位置 */
+	left: 0px; /* 横棒のX位置 */
+	width: 5px; /* 横棒の長さ */
+	height: 20px; /* 横棒の幅 */
+	transform: rotate(90deg); /* 角度 */
+	background: #E64112; /* 横棒の色 */
+	}
+
+.square01 {
+	width: 20px;
+	height: 20px;
+	background: #E64112;
+	top: 80%;
+	left: 3%;
+}
+
+.square02 {
+	width: 20px;
+	height: 20px;
+	background: #119D63;
+	top: 18%;
+	right: 3%;
+}
+
+.perfect-circle01 {
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	background: #317692;
+	top: 40%;
+	left: 4%;
+}
+
+.perfect-circle02 {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #119D63;
+	top: 12%;
+	left: 3%;
+}
+
+.perfect-circle03 {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: #EDC01B;
+	top: 60%;
+	right: 5%;
+}
+
+
+.perfect-circle04 {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #E64112;
+	top: 70%;
+	right: 2%;
+}
+
+/******************************************
+* mobile
+******************************************/
+@media screen and (min-width: 0px) , print{
+
+body {
+	height:100%;
+	width:100vw;
+/* 方眼紙模様に必須のスタイル */
+  background-size: 30px 30px;/*1マスのサイズ*/
+}
+
+.br-sp{
+	display:block;
+
+}
+	
+#cursor{
+	display:none;
+}
+
+.title-group {
+	margin-bottom: var(--sp-md); /* 下にあるコンテンツとの距離 */
+	text-align: center;
+}
+
+.title-group .title {
+  font-size: var(--fs-xl);
+  font-weight:bold;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: .05em;
+  color: var(--accent-grey);
+}
+
+/*--------------------------------
+item
+---------------------------------*/
+.item {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+  	box-shadow: var(--item-shadow);
+	background-color: var(--white);/*背景白*/
+	margin: var(--sp-xs);
+	padding:16px;
+	border-radius: 8px;
+	gap:0;
+}
+
+/*--------------------------------
+header
+---------------------------------*/
+header {  
+	position: fixed;
+	top:0;
+	left: 0;
+	margin: 0;
+	width: 100%;
+	height: var(--header-height);
+	background-color: var(--white);
+	z-index: 500;
+}
+
+#header-box {
+	display:flex;
+	flex-wrap:nowrap;
+	height: 100%;
+}
+
+#header-box .HOME {
+	margin:15px auto 0 2rem;
+	font-size: var(--fs-md);
+}
+
+#header-box ul {
+	display:none;
+}
+
+/******hamberger-menu******/
+#hamburger{
+	position:absolute;
+	top:15px;
+	right:20px;
+	width:28px;
+	height:20px;
+	cursor:pointer;
+}
+
+/*lineの設定*/
+.inner_line{
+	display:block;
+	position:absolute;
+	left:0;
+	width:28px;/*線幅_基本hambergerと同じ*/
+	height:3px;/*線の太さ*/
+	background-color: var(--text-black);
+	border-radius:4px;
+	transition:0.5s;
+	z-index:9999;
+}
+
+#line1{
+	top:0;
+}
+
+#line2{
+	top:9px;
+}
+
+#line3{
+	bottom:0;
+}
+
+	
+/*クリック後_x印*/
+.line_1,.line_2,.line_3{
+	background-color: var(--text-black);
+}
+
+.line_1{
+	transform:rotate(-45deg);
+	margin-top:10px;
+	top:0;
+}
+
+.line_2{
+	opacity:0;
+}
+
+.line_3{
+	transform:rotate(45deg);
+	bottom:0;
+	margin-bottom:7px;
+}
+	
+
+/*nav(menu)*/
+nav{
+  width: 100vw;
+  height: 100vh;
+  position:absolute;
+  top: 0;
+  right: -100%; /** ナビメニューを右に移動し隠した状態になる **/background-color: rgba(255, 255, 255, 0.8);/*背景のみ透明にする*/
+/** ０.7秒かけてナビメニューがスライドする **/
+  transition: 0.7s;
+  visibility: hidden; 
+  opacity: 0;
+}
+
+nav ul{
+	display:flex;
+	justify-content: space-between;
+	width: 70%;
+	margin: 0 auto;
+	padding-top: 10vh;
+}
+	
+nav li a{
+transition: all  0.3s ease;/*ふわっとさせる間隔*/
+font-size: var(--fs-md);
+font-weight:bold;
+cursor: pointer;/*ホバー時にカーソルの形状をポインターに*/
+	display:block;
+	text-decoration:none;
+	color: var(--text-black);
+	margin: 0 15px;
+	writing-mode:vertical-rl;
+	text-orientation:upright;
+
+}
+
+/*navスライドの移動*/
+.in{
+	transform:translateX(-100%);
+	visibility: visible;
+	opacity: 1;
+}
+
+/*--------------------------------
+footer
+---------------------------------*/
+footer{  
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 40px;
+	background-color:#CCC;
+	margin-top: var(--sp-2xl); 
+	margin-bottom: 0;
+}
+
+#footer-box{
+	font-size: var(--fs-sm);
+	font-weight:600;
+	text-align: center;
+	margin:auto;
+	position:relative;
+}
+
+/*--------------------------------
+works-item
+---------------------------------*/
+.works-item {
+	grid-column: 6 span;/*分割されたうち、4つ*/
+	grid-row: 5 span;
+  margin-right: 5%;
+  margin-bottom: 40px;
+
+}
+
+.works-img {
+	border-radius: var(--rd-sm);
+	overfreelance-activity: hidden;
+}
+
+.works-img img,video {
+	border: none;
+	width:100%;
+	height:auto;
+	vertical-align: bottom;/*画像の下にできる余白を削除*/
+	border: none;
+	transition: transform .6s ease;
+}
+
+.works-img:hover  img{
+  opacity: 0.8;
+  cursor:pointer;
+  transform: scale(1.1);
+}
+
+.works-name {
+  font-size: var(--fs-l);
+  font-weight: bold;
+  margin-top: var(--sp-xs);
+}
+
+.works-info {
+  font-size: var(--fs-md);
+  margin:10px 0;
+}
+
+/*==================================================
+more リンク
+===================================*/
+.more-box {
+	width: 200px;
+	height: 40px;
+	margin: auto;
+}
+
+	
+.more-link {
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+	background-color: var(--white);
+  border-radius: var(--rd-sm);
+  box-shadow: 0 3px 10px rgb(0 0 0 / 16%);
+}
+
+.more-link:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-orange);
+  border-radius: var(--rd-sm);
+  transform: translate(-50%, -50%) scale(0, 0);
+  transition: transform ease 0.4s;
+}
+
+.more-link:before {
+	content: "more";
+	font-weight: bold;
+    color: var(--text-main);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 10;
+}
+
+
+.more-link:hover:after {
+  transform: translate(-50%, -50%) scale(1.1, 1.1);
+}
+
+/*==================================================
+モーダルcss
+===================================*/
+.modal-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 999;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 40px 10px;
+	text-align: center;
+  }
+  
+  .modal-wrapper:not(:target) {
+	opacity: 0;
+	visibility: hidden;
+  }
+  
+  .modal-wrapper:target {
+	opacity: 1;
+	visibility: visible;
+	transition: opacity .4s, visibility .4s;
+  }
+  
+  .modal-wrapper::after {
+	display: inline-block;
+	height: 100%;
+	margin-left: -.05em;
+	vertical-align: middle;
+	content: "";
+  }
+
+    .modal-wrapper a:hover {
+	opacity: 1;
+  }
+
+
+  .modal_title {
+	font-size: var(--fs-xl);
+	  font-weight: bold;
+	  position: relative;
+	padding: 0;
+	  margin: 10px 0;
+  }
+  
+  
+  .modal_title::before,
+  .modal_title::after{
+	  content: "";
+	  position: absolute;
+	  bottom: 0;
+  }
+	  
+	  .modal-img-box{
+		  text-align: center;
+		  margin: 10px;
+	  }
+  
+  .modal-content img{
+	  max-height:70vh;
+	  width:auto;
+	  margin:5px 0;
+  }
+  
+  .modal p{
+	  max-height:10vh;
+  }
+	  
+  
+  .modal-content p {
+	margin: 10px 0 10px 0;
+	max-width: 70vw;
+  }
+  
+  .modal-overlay {
+	z-index: 10;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+  }
+  
+  .modal-wrapper .modal-close {
+	z-index: 20;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 35px;
+	color: var(--text-sub) !important;
+	font-size: var(--fs-xl);
+	font-weight: 700;
+	line-height: 35px;
+	text-align: center;
+	text-decoration: none;
+	text-indent: 0;
+  }
+  
+  .modal-wrapper .modal-close:hover {
+	color: #2b2e38 !important;
+  }
+  
+
+.modal-wrapper .modal-window {
+	box-sizing: border-box;
+	display: inline-block;
+	z-index: 20;
+	position: relative;
+	max-width: 90vw;
+	max-height: 90vh;
+	padding: 10px 30px 25px;
+	background: #fff;
+	box-shadow: 0 0 30px rgba(0, 0, 0, .6);
+	border-radius: var(--rd-md);
+}
+
+.modal-wrapper .modal-window .modal-content {
+	max-height: 75vh;
+	max-width: 75vh;
+	overflow-y: auto;/*ブロックレベル要素の内容が上下の境界からあふれた場合どうするか*/
+	text-align: left;
+  }
+
+  /* Modaalコンテナに角丸を適用 */
+  .modaal-container {
+	border-radius: var(--rd-md);
+	overflow: hidden;
+  }
+
+}
+
+/******************************************/
+/************************END  smartphone **/
+/******************************************/
+
+
+
+/******************************************/
+/******************************** PC **/
+/******************************************/
+@media screen and  (min-width: 1025px) , print{
+	
+body {
+/* 方眼紙模様に必須のスタイル */
+  background-size: 40px 40px;/*1マスのサイズ*/
+}
+
+	.fuwa-animation{
+		animation: none;
+	}
+
+#cursor{
+	display: block;
+	}
+
+/*--------------------------------
+header
+---------------------------------*/
+#header-box ul {
+	margin:8px 50px auto auto;
+	display:flex;
+	flex-wrap:nowrap;
+	justify-content:space-between;
+	align-items: center;
+	font-size: var(--fs-md);
+}
+	
+#header-box ul li{
+	margin: 10px;
+	
+}
+/*hamberger-menuを表示させない*/
+#ham-box{
+	display:none;
+}
+
+/*--------------------------------
+footer
+---------------------------------*/
+footer{  
+	height: 80px;
+	margin-top: 80px; 
+}
+
+}

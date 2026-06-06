@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>TAE's PORTFOLIO | WORKS イラスト デザイン ウェブ</title>
+
+<!--CSS-->
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+<!--reset CSS-->   
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
+<!--共通CSS-->
+    <link href="css/common.css" rel="stylesheet" type="text/css" />
+	<link href="css/anime.css" rel="stylesheet" type="text/css" />
+    
+<!--独自CSS-->
+    <link href="css/works02.css" rel="stylesheet" type="text/css" />
+<!--END CSS-->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+ 
+ 
+ <!--font-->
+ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<!--END font-->
+</head>
+<!--END head-->
+
+<body onload="Settoday();">
+	<div id="cursor"></div>
+    <div id="stalker"></div>
+	<!-- header -->
+	<header id="header-wrap"></header>
+	<script>
+	fetch('header.html')
+		.then(response => response.text())
+		.then(data => {
+		document.getElementById('header-wrap').innerHTML = data;
+		});
+	</script>
+	<!-- /header -->
+
+<main>
+	<div class="shape-container">
+		<div class="equilateral-triangle shape" id="triangle01"></div>
+		<div class="equilateral-triangle shape" id="triangle02"></div>
+		<div class="batu shape"></div>
+		<div class="batu02 shape"></div>
+		<div class="square01 shape"></div>
+		<div class="square02 shape"></div>
+		<div class="perfect-circle01 shape"></div>
+		<div class="perfect-circle02 shape"></div>
+		<div class="perfect-circle03 shape"></div>
+		<div class="perfect-circle04 shape"></div>
+</div><!--/.shaoe-sontainer-->
+<!-- works -->
+<section class="works section" id="works">
+  <div class="title-group">
+    <h2 class="title">Works</h2>
+    <h3>制作に携わったものを掲載しています。</h3>
+  </div>
+  <div class="gnavi-wrap">
+  <div class="gnavi-box _commercial">
+    <p class="gnavi-title">COMMERCIAL (会社実績)</p>
+    <ul class="gnavi">
+      <li><a href="#" data-category="works-commercial-webdesign">WEBDESIGN</a></li>
+    </ul>
+  </div>
+  <div class="gnavi-box _personal">
+    <p class="gnavi-title">PERSONAL (個人制作)</p>
+    <p class="gnavi-subtitle">主にSNS配信業などの個人の方相手にお仕事をいただいています。</p>
+    <ul class="gnavi">
+      <li><a href="#" data-category="works-personal-webdesign">WEBDESIGN</a></li>
+      <li><a href="#" data-category="works-personal-graphic">GRAPHIC</a></li>
+      <li><a href="#" data-category="works-personal-illustration">ILLUSTRATION</a></li>
+      <li><a href="#" data-category="works-personal-animation">ANIMATION</a></li>
+      <li><a href="#" data-category="works-personal-art">ART</a></li>
+    </ul>
+  </div>
+</div>
+</section>
+<!-- コンテンツの差し込み先 -->
+<div id="works-content"></div>
+    <div id="page-top"><a href="#"><img src="img/TOP_link.png"></a></div>
+
+</main>
+<!--END main-->
+<footer>
+	<div id="footer-box">
+        <p id="copyright">&copy;TAE YAMAGISHI</p>
+    </div>
+</footer>
+<!--END footer-->
+
+<!--script-->
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
+<script src="js/function.js"></script>
+<script src="js/works.js"></script>
+<!--END script-->
+
+</body>
+</html>
