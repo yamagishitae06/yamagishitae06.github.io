@@ -4,6 +4,7 @@
 :root {
 	/* --- Colors --- */
 	--primary-orange: #EF831A;    /* メインアクセント（moreボタン、Step番号など） */
+	--sub-orange: #f3d3b2;
 	--accent-grey: #737d6d;     /* プロフィールタイトルなど */
 	--text-main: #333333;
 	--text-sub: #939393;        /* 資格リンクや補足テキスト */
@@ -653,9 +654,9 @@ more リンク
   transform: translate(-50%, -50%) scale(1.1, 1.1);
 }
 
-/*==================================================
-モーダルcss
-===================================*/
+/* ==========================================================================
+   モーダルcss
+   ========================================================================== */
 .modal-wrapper {
 	display: flex;
 	justify-content: center;
@@ -730,7 +731,236 @@ more リンク
 	margin: 10px 0 10px 0;
 	max-width: 70vw;
   }
-  
+
+  .modal-content p a {
+	color: var(--text-dar);
+	font-size: var(--fs-md);
+	text-decoration: underline;
+  }
+  .modal-content p  a :hover {
+	opacity: 0.6;
+  }
+
+/*==================================================
+モーダル内ポートフォリオ詳細コンポーネント
+===================================*/
+
+/* 全体のフォント設定（指定のZen Maru Gothicなどを適用） */
+.modal-window {
+  font-family: var(--font-main);
+  color: var(--text-main);
+}
+
+/* タイトルと説明文の調整 */
+.modal_title {
+  font-size: var(--fs-xl);
+  font-weight: bold;
+  color: var(--text-main);
+  margin-bottom: var(--sp-sm);
+}
+
+.modal-content .bold {
+  font-size: var(--fs-l);
+  font-weight: bold;
+  color: var(--text-dark);
+  margin-top: var(--sp-sm);
+  margin-bottom: var(--sp-xs);
+}
+
+.modal-description {
+  font-size: var(--fs-md);
+  color: var(--text-main);
+  line-height: 1.6;
+  margin-bottom: var(--sp-md);
+}
+
+/* 🏢 2カラムのレイアウトベース */
+.p-modal-body {
+  display: flex;
+  gap: var(--sp-md);
+  width: 100%;
+  align-items: stretch;
+  padding-top: var(--sp-md);
+  border-top: 2px solid var(--bg-border);
+}
+
+/* 💻 左側：メインコンテンツ */
+.p-modal-main {
+  flex: 1;
+}
+
+.p-modal-block {
+  padding-bottom: var(--sp-md);
+}
+
+/* 中央を区切る境界線 */
+.p-concept {
+  border-bottom: 2px solid var(--bg-border);
+  margin-bottom: var(--sp-md);
+}
+
+.p-heading {
+  font-size: var(--fs-l);
+  color: var(--text-dark);
+  margin-bottom: var(--sp-sm);
+  font-weight: bold;
+  text-align: start;
+}
+
+/* オレンジ丸のリスト（--primary-orangeを使用） */
+.p-bullet-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.p-bullet-list li {
+  position: relative;
+  padding-left: var(--sp-sm);
+  margin-bottom: var(--sp-xs);
+  font-size: var(--fs-md);
+  line-height: 1.6;
+}
+
+.p-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--sub-orange);
+  border-radius: 50%;
+}
+
+/* 実績アイテムの横並び設定 */
+.p-feature-item {
+  display: flex;
+  gap: var(--sp-sm);
+  margin-bottom: var(--sp-md);
+  align-items: flex-start;
+}
+
+.p-feature-item:last-child {
+  margin-bottom: 0;
+}
+
+.p-feature-text {
+  flex: 1;
+}
+
+.p-feature-text h4 {
+  font-size: var(--fs-l);
+  color: var(--primary-orange);
+  margin-bottom: var(--sp-xs);
+  font-weight: bold;
+  text-align: start;
+}
+
+.p-feature-text p {
+  font-size: var(--fs-md);
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* 右側画像ボックス（定義されたシャドウと角丸を適用） */
+.p-feature-img {
+  width: 180px;
+  flex-shrink: 0;
+}
+
+.p-feature-img img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--rd-sm);
+  box-shadow: var(--item-shadow);
+  display: block;
+}
+
+
+/* 📑 右側：制作データ（サイドバー） */
+.p-modal-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background-color: var(--bg-border);
+  border-radius: var(--rd-md);
+  padding: var(--sp-sm);
+  /* 💡 念のため高さを親いっぱいに広げる指定を追加 */
+  height: 100%; 
+  box-sizing: border-box;
+}
+
+.p-meta-group,
+.p-modal-sidebar-bottom {
+  margin-bottom: var(--sp-sm);
+}
+
+.p-modal-sidebar-bottom {
+  margin-bottom: 0;
+}
+
+.p-modal-sidebar h3 {
+  font-size: var(--fs-md);
+  color: var(--accent-grey); 
+  margin-bottom: var(--sp-xs);
+  font-weight: bold;
+  text-align: start;
+}
+
+.p-modal-sidebar p {
+  font-size: var(--fs-sm);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* 担当領域内の詳細リスト調整 */
+.p-sidebar-sub-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: var(--sp-xs);
+}
+
+.p-sidebar-sub-list li {
+  font-size: var(--fs-sm);
+  position: relative;
+  padding-left: 12px;
+  line-height: 1.5;
+}
+
+.p-sidebar-sub-list li::before {
+  content: "・";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* パターン①（ul）の場合のCSS調整例 */
+.p-meta-list {
+  list-style: none;
+  padding-left: 0;
+  margin-0: 0;
+}
+
+.p-meta-item {
+  margin-bottom: var(--sp-sm); /* 16px相当の余白 */
+}
+
+.p-meta-item:last-child {
+  margin-bottom: 0;
+}
+
+.p-meta-item h3 {
+  font-size: var(--fs-md);
+  color: var(--accent-grey);
+  font-weight: bold;
+  margin-bottom: var(--sp-xs); /* 8px相当 */
+}
+
+.p-meta-item p {
+  font-size: var(--fs-sm);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
   .modal-overlay {
 	z-index: 10;
 	position: absolute;

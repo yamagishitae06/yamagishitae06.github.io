@@ -80,17 +80,22 @@ color: var(--accent-grey);
 }
 
 .pr {
+	display: flex;
+	flex-direction: column;
 	flex-grow: 1;
 	background: var(--white);
 	width: 80%;
 	max-width: 600px;
-	padding: 28px;
+	padding: var(--sp-md);
 	border-radius: var(--rd-md);
 	border: solid 1px var(--primary-orange);/*線*/
 	z-index: 10;
 }
 
-.pr:last-child {
+.pr._more {
+}
+
+section.profile .pr:last-child {
 	border: solid 4px var(--primary-orange);/*線*/
 }
 
@@ -204,6 +209,48 @@ width: 250px;
 	color: var(--primary-orange);
 }
 
+
+/*--------------------------------
+ phone StrongPoints
+---------------------------------*/
+.container-strongPoints {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding: var(--sp-xs);
+	gap: var(--sp-xs);
+	margin: 0 auto;
+}
+
+.strongPoints-item {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-xs);
+	width: 250px;
+	align-items: center;
+	justify-content: start;
+	padding: var(--sp-xs);
+	background-color: var(--white);
+	box-shadow: var(--item-shadow);
+	border-radius: var(--rd-sm);
+}
+
+.strongPoints-img {
+  width: 100px;
+  height: 80px;
+}
+
+
+.strongPoints-name {
+  font-size:var(--fs-md);
+  font-weight: bold;
+  text-align: start;
+}
+
+.strongPoints-info {
+  font-size: var(--fs-sm);
+}
+
 /*--------------------------------
  phone skill
 ---------------------------------*/
@@ -265,6 +312,7 @@ width: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: var(--sp-sm);
 }
 
 .skill-img img{
@@ -318,11 +366,6 @@ width: 250px;
 .skill-item:nth-child(even) {
 	border-right: none;
 }
-
-.skill-txtbox{
-	width: 70%;
-	margin:0 auto;
-}
 /*--------------------------------
 /PC profile
 ---------------------------------*/
@@ -364,20 +407,7 @@ margin: 10px;
 	gap: 20px;
 }
 
-.pr {
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
-	background: var(--white);
-	width: 80%;
-	max-width: 600px;
-	padding: 28px;
-	border-radius: var(--rd-md);
-	border: solid 1px var(--primary-orange);/*線*/
-	z-index: 100;
-}
-
-.pr:last-child {
+section.profile .pr:last-child {
 	width: 90%;
 	max-width: 1080px;
 }

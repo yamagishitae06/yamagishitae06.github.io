@@ -42,5 +42,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 初期表示
-  showCategory('works-commercial-webdesign');
+  showCategory('works-commercial-web');
 });

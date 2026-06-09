@@ -64,9 +64,12 @@
 }
 	
 .works ul.gnavi {
+	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	text-align: center;
 	gap: var(--sp-xs);
+	padding: 0 var(--sp-xs);
 }
 	
 .works ul.gnavi li {
