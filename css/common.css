@@ -30,21 +30,21 @@
 	--font-main: 'Zen Maru Gothic', sans-serif;;
 
 	/* --- Font Sizes --- */
+	--fs-sm:  0.8rem;  /* info */
+	--fs-md:  1.0rem;    /* body (基準) */
+	--fs-l:  1.2rem;    /* subtitle */
+	--fs-lg:  2.0rem;    /* step */
+	--fs-xl:  2.4rem;    /* title */
 	--fs-2xl: 4.0rem;    /* huge */
-    --fs-xl:  2.4rem;    /* title */
-    --fs-lg:  2.1rem;    /* step */
-	--fs-l:  1.5rem;    /* subtitle */
-    --fs-md:  1.0rem;    /* body (基準) */
-    --fs-sm:  0.833rem;  /* info */
 
-	/* 8の倍数スケール */
-	--sp-xs: 0.5rem;  /* 8px */
-	--sp-sm: 1.0rem;  /* 16px */
-	--sp-md: 1.5rem;  /* 24px */
-	--sp-lg: 2.0rem;  /* 32px */
-	--sp-xl: 4.0rem;  /* 64px */
-	--sp-2xl: 5.0rem; /* 80px */
-	--sp-3xl: 6.0rem; /* 96px */
+	/* 6の倍数スケール */
+	--sp-xs: 6px;
+	--sp-sm: 12px;
+	--sp-md: 28px;
+	--sp-lg: 36px; 
+	--sp-xl: 48px;
+	--sp-2xl: 60px; 
+	--sp-3xl: 72px; 
 
 	/* 角丸の定義 (8の倍数) */
     --rd-sm: 8px;   /* ボタンや小さなタグ用 */
@@ -60,7 +60,7 @@
 html{
 	height:100%;
 	width:100%;
-	font-size: 16px;
+	font-size: 14px;
 	scroll-behavior: smooth;
 	scroll-padding-top: var(--header-height);
 	-webkit-overfreelance-activity-scrolling: touch;
@@ -432,7 +432,7 @@ header {
 
 #header-box .HOME {
 	margin:15px auto 0 2rem;
-	font-size: var(--fs-md);
+	font-size: var(--fs-l);
 }
 
 #header-box ul {
@@ -565,11 +565,10 @@ footer{
 works-item
 ---------------------------------*/
 .works-item {
-	grid-column: 6 span;/*分割されたうち、4つ*/
+	grid-column: 12 span;
 	grid-row: 5 span;
-  margin-right: 5%;
-  margin-bottom: 40px;
-
+	margin-right: 5%;
+	margin-bottom: 40px;
 }
 
 .works-img {
@@ -711,15 +710,19 @@ more リンク
 	  bottom: 0;
   }
 	  
-	  .modal-img-box{
-		  text-align: center;
-		  margin: 10px;
-	  }
+	.modal-img-box{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: var(--sp-sm);
+		text-align: center;
+		margin: 10px;
+	}
   
   .modal-content img{
-	  max-height:70vh;
 	  width:auto;
-	  margin:5px 0;
+	  max-height: 500px;
   }
   
   .modal p{
@@ -744,6 +747,9 @@ more リンク
 /*==================================================
 モーダル内ポートフォリオ詳細コンポーネント
 ===================================*/
+.modaal-content-container {
+	padding: var(--sp-md);
+}
 
 /* 全体のフォント設定（指定のZen Maru Gothicなどを適用） */
 .modal-window {
@@ -1021,32 +1027,26 @@ more リンク
 /******************************************/
 /************************END  smartphone **/
 /******************************************/
-
-
-
-/******************************************/
-/******************************** PC **/
-/******************************************/
-@media screen and  (min-width: 1025px) , print{
-	
-body {
-/* 方眼紙模様に必須のスタイル */
-  background-size: 40px 40px;/*1マスのサイズ*/
+@media screen and  (min-width: 678px) , print{
+html {
+	font-size: 16px;
 }
-
-	.fuwa-animation{
-		animation: none;
-	}
-
-#cursor{
-	display: block;
+	:root {
+	/* 8の倍数スケール */
+	--sp-xs: 8px;  /* 8px */
+	--sp-sm: 16px;  /* 16px */
+	--sp-md: 24px;  /* 24px */
+	--sp-lg: 32px;  /* 32px */
+	--sp-xl: 64px;  /* 64px */
+	--sp-2xl: 80px; /* 80px */
+	--sp-3xl: 96px; /* 96px */
 	}
 
 /*--------------------------------
 header
 ---------------------------------*/
 #header-box ul {
-	margin:8px 50px auto auto;
+	margin: 8px var(--sp-md) auto auto;
 	display:flex;
 	flex-wrap:nowrap;
 	justify-content:space-between;
@@ -1062,6 +1062,37 @@ header
 #ham-box{
 	display:none;
 }
+
+.works-item {
+	grid-column: 6 span;/*分割されたうち、4つ*/
+	grid-row: 5 span;
+	margin-right: 5%;
+	margin-bottom: 40px;
+}
+}
+
+
+/******************************************/
+/******************************** PC **/
+/******************************************/
+@media screen and  (min-width: 1025px) , print{
+html {
+	font-size: 18px;
+}
+
+
+body {
+/* 方眼紙模様に必須のスタイル */
+  background-size: 40px 40px;/*1マスのサイズ*/
+}
+
+	.fuwa-animation{
+		animation: none;
+	}
+
+#cursor{
+	display: block;
+	}
 
 /*--------------------------------
 footer

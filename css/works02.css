@@ -151,23 +151,12 @@
 	margin:0 auto;
 }
 
-.works-item {
-	grid-column: 4 span;/*分割されたうち、4つ*/
-	grid-row: 5 span;
-	margin-right: 5%;
-	margin-bottom: 40px;
-	position: relative;
-}
-
-
 .works-info {
   font-size: var(--fs-sm);
   margin:10px 0;
 }
 
 }
-
-
 
 /******************************************/
 /********************************END  PC **/
