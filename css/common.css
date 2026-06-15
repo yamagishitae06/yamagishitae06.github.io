@@ -574,18 +574,23 @@ works-item
 .works-img {
 	border-radius: var(--rd-sm);
 	overfreelance-activity: hidden;
+	width: 100%;
+	max-height: 300px;
+	text-align: center;
 }
 
-.works-img img,video {
+.works-img img,video,iframe {
 	border: none;
-	width:100%;
+	max-width:100%;
 	height:auto;
+	max-height: 100%;
+	text-align: center;
 	vertical-align: bottom;/*画像の下にできる余白を削除*/
 	border: none;
 	transition: transform .6s ease;
 }
 
-.works-img:hover  img{
+.works-img:hover img{
   opacity: 0.8;
   cursor:pointer;
   transform: scale(1.1);
@@ -718,6 +723,11 @@ more リンク
 		gap: var(--sp-sm);
 		text-align: center;
 		margin: 10px;
+	}
+
+	.modal-img-box iframe {
+		height: 350px;
+		width: 100%;
 	}
   
   .modal-content img{
@@ -870,7 +880,7 @@ more リンク
 
 /* 右側画像ボックス（定義されたシャドウと角丸を適用） */
 .p-feature-img {
-  width: 180px;
+  width: 100%;
   flex-shrink: 0;
 }
 
