@@ -725,15 +725,16 @@ more リンク
 		margin: 10px;
 	}
 
+	.modal-img-box img{
+		width:auto;
+		max-height: 500px;
+	}
+
 	.modal-img-box iframe {
 		height: 350px;
 		width: 100%;
 	}
-  
-  .modal-content img{
-	  width:auto;
-	  max-height: 500px;
-  }
+
   
   .modal p{
 	  max-height:10vh;
