@@ -1,11 +1,11 @@
 // js/works.js
 
 async function showCategory(category) {
-  const res = await fetch(`${category}.html`);
+  const res = await fetch(`works-${category}.html`);
   document.getElementById('works-content').innerHTML = await res.text();
   setActiveNav(category);
 
-  // Modaalの再初期化
+   // Modaalの再初期化
   $('.modal-button').modaal();
   // ① URLを更新（ページ遷移なし）
   history.pushState({ category }, '', `?category=${category}`);
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ② URLにcategoryがあればそれを初期表示、なければデフォルト
   const params = new URLSearchParams(window.location.search);
-  const initial = params.get('category') || 'commercial-webdesign';
+  const initial = params.get('category') || 'commercial-web';
   showCategory(initial);
 
   // ③ ブラウザの「戻る/進む」にも対応
