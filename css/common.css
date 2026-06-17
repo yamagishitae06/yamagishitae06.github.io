@@ -85,6 +85,8 @@ body {
   background-size: 50px 50px;/*1マスのサイズ*/
   background-repeat: repeat;
   background-position: center center;/*マス目の起点*/
+  overflow-wrap: break-word;
+  word-break: auto-phrase;
 }
 
 main {

@@ -217,8 +217,8 @@ width: 250px;
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	padding: var(--sp-xs);
-	gap: var(--sp-xs);
+	padding: var(--sp-sm);
+	gap: var(--sp-sm);
 	margin: 0 auto;
 }
 
@@ -229,7 +229,7 @@ width: 250px;
 	width: 250px;
 	align-items: center;
 	justify-content: start;
-	padding: var(--sp-xs);
+	padding: var(--sp-md);
 	background-color: var(--white);
 	box-shadow: var(--item-shadow);
 	border-radius: var(--rd-sm);
