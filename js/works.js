@@ -40,7 +40,4 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('popstate', (e) => {
     if (e.state?.category) showCategory(e.state.category);
   });
-
-  // 初期表示
-  showCategory('works-commercial-web');
 });
