@@ -325,7 +325,7 @@ phone freelance-activity
 	/* スクロールバーを非表示にする */
     -ms-overflow-style: none;    /* IE/Edge用 */
     scrollbar-width: none;       /* Firefox用 */
-	/* 左右に余白（8の倍数）を入れて、最初のステップが端に寄りすぎないようにする */
+	padding: 0 var(--sp-md);
 }
 
 /* Chrome/Safariでスクロールバーを非表示にする */
@@ -351,6 +351,7 @@ phone freelance-activity
 
 .freelance-activity-img {
   display: flex;
+  width: 100%;
 }
 
 .freelance-activity-img img {
@@ -359,6 +360,7 @@ phone freelance-activity
 }
 
 .freelance-activity-name {
+	min-width: 120px;
 	text-align: center;
 	font-size: var(--fs-sm);
 	font-weight: bold;

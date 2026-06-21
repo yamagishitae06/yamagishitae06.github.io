@@ -37,6 +37,12 @@ text-align: center;
 color: var(--accent-grey);
 }
 
+.profile-name-sub {
+	font-size: var(--fs-l);
+	font-weight: 400;
+	color: var(--text-sub);
+}
+
 .profile-txt{
 	margin: 10px;
 }
@@ -236,10 +242,14 @@ width: 250px;
 }
 
 .strongPoints-img {
-  width: 100px;
-  height: 80px;
+  width: 100%;
+  height: auto;
+  text-align: center;
 }
 
+.strongPoints-img img {
+	margin: auto;
+}
 
 .strongPoints-name {
   font-size:var(--fs-md);
