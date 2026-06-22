@@ -25,11 +25,8 @@ profile
 }
 
 /* 本体カード（ドラッグ可能） */
-.profile-card {
-    display: flex;
-	flex-direction: column;
-    justify-content: center;
-    text-align: center;
+.profile-card,
+.stack-card {
     width: 100%;
 	min-width: 200px;
     height: 100%;
@@ -38,12 +35,30 @@ profile
     background-color: var(--white);
     box-shadow: var(--item-shadow);
     border-radius: var(--rd-md);
-    position: absolute;
+	aspect-ratio: 1 / 1.654;
+}
+
+.profile-card {
+	position: absolute;
     top: 0;
     left: 0;
     cursor: grab;
     user-select: none;
     touch-action: none;
+	display: flex;
+	flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/* 背景の束（装飾用） */
+.stack-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* クリック・ドラッグ無効化 */
 }
 
 .profile-card img{
@@ -82,19 +97,6 @@ profile
 .profile-card.dragging {
     cursor: grabbing;
     transition: none !important;
-}
-
-/* 背景の束（装飾用） */
-.stack-card {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--white);
-    box-shadow: var(--item-shadow);
-    border-radius: var(--rd-md);
-    pointer-events: none; /* クリック・ドラッグ無効化 */
 }
 
 /* 一番奥（3枚目）：少し回転とズレを大きく */
@@ -419,16 +421,14 @@ width: 250px;
 
 .card-stack {
 	position: relative;
-    width: auto;
 	max-width: none;
-    height: 50%;
-	max-height: 400px;
     margin: auto;
     aspect-ratio: 1.654 / 1;
 }
 
 .profile-card {
 	flex-direction: row;
+	aspect-ratio: 1.654 / 1;
 }
 
 .profile-card img {
@@ -466,14 +466,6 @@ width: 250px;
 ---------------------------------*/
 .profile .contents-box{
 	margin: auto;
-}
-
-
-.profile-card{
-	text-align:center;
-	width:auto;
-	height: auto;
-	margin:auto;
 }
 
 .profile-txt{
