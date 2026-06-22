@@ -1,62 +1,9 @@
 @charset "utf-8";
+@import url('reset.css');
+@import url('variables.css');
 /* CSS Document */
+@media screen and (min-width: 0px) , print{
 /** 全画面共通 **/
-:root {
-	/* --- Colors --- */
-	--primary-orange: #EF831A;    /* メインアクセント（moreボタン、Step番号など） */
-	--sub-orange: #f3d3b2;
-	--accent-grey: #737d6d;     /* プロフィールタイトルなど */
-	--text-main: #333333;
-	--text-sub: #939393;        /* 資格リンクや補足テキスト */
-	--white: #FFFFFF;
-	--modal-overlay: rgba(0, 0, 0, 0.8);
-	--bg-border: #f7f7f7;
-
-	/* --- Additional Colors --- */
-	--text-dark: #2b2e38;        /* 濃いグレイ（モーダルホバーなど） */
-	--text-grey: #828282;        /* グレイ（副見出しなど） */
-	--text-grey-light: #B0B0B0;  /* 薄いグレイ（補足テキスト） */
-	--text-black: #000000;       /* 黒（ハンバーガーメニューなど） */
-	--bg-grey: #CCC;             /* グレイ背景（フッターなど） */
-
-	/* --- Loader Colors --- */
-	--loader-core: #e96;
-	--loader-petal: #fd8;
-
-	/* Layout */
-	--header-height: 50px;
-  
-	/* Fonts */
-	--font-main: 'Zen Maru Gothic', sans-serif;;
-
-	/* --- Font Sizes --- */
-	--fs-sm:  0.8rem;  /* info */
-	--fs-md:  1.0rem;    /* body (基準) */
-	--fs-l:  1.2rem;    /* subtitle */
-	--fs-lg:  2.0rem;    /* step */
-	--fs-xl:  2.4rem;    /* title */
-	--fs-2xl: 4.0rem;    /* huge */
-
-	/* 6の倍数スケール */
-	--sp-xs: 6px;
-	--sp-sm: 12px;
-	--sp-md: 28px;
-	--sp-lg: 36px; 
-	--sp-xl: 48px;
-	--sp-2xl: 60px; 
-	--sp-3xl: 72px; 
-
-	/* 角丸の定義 (8の倍数) */
-    --rd-sm: 8px;   /* ボタンや小さなタグ用 */
-    --rd-md: 16px;  /* カードやセクションの背景用 */
-
-	/* shadow */
-	--item-shadow: 0px 4px 4px rgb(0 0 0 / 16%);
-
-	/* --- Transitions --- */
-	--transition-base: 0.4s ease;
-}
-
 html{
 	height:100%;
 	width:100%;
@@ -82,7 +29,7 @@ body {
   background-image: linear-gradient(0deg, transparent calc(100% - 1px),/* 0 ~ (100% - 1px)までを透明に */
    var(--bg-border) calc(100% - 1px)),/* (100% - 1px) ~ 100%までを薄い灰色に */
                     linear-gradient(90deg, transparent calc(100% - 1px), var(--bg-border)  calc(100% - 1px));
-  background-size: 50px 50px;/*1マスのサイズ*/
+  background-size: 30px 30px;/*1マスのサイズ*/
   background-repeat: repeat;
   background-position: center center;/*マス目の起点*/
   overflow-wrap: break-word;
@@ -360,18 +307,6 @@ background:linear-gradient(transparent 70%, #EDC01B 70%);
 	background: #E64112;
 	top: 70%;
 	right: 2%;
-}
-
-/******************************************
-* mobile
-******************************************/
-@media screen and (min-width: 0px) , print{
-
-body {
-	height:100%;
-	width:100vw;
-/* 方眼紙模様に必須のスタイル */
-  background-size: 30px 30px;/*1マスのサイズ*/
 }
 
 .br-sp{
@@ -1038,9 +973,9 @@ more リンク
 }
 
 /******************************************/
-/************************END  smartphone **/
+/******************************** tablet **/
 /******************************************/
-@media screen and  (min-width: 678px) , print{
+@media screen and  (min-width: 768px) , print{
 html {
 	font-size: 16px;
 }
@@ -1088,7 +1023,7 @@ header
 /******************************************/
 /******************************** PC **/
 /******************************************/
-@media screen and  (min-width: 1025px) , print{
+@media screen and  (min-width: 1024px) , print{
 html {
 	font-size: 18px;
 }

@@ -1,0 +1,56 @@
+:root {
+	/* --- Colors --- */
+	--primary-orange: #EF831A;    /* メインアクセント（moreボタン、Step番号など） */
+	--sub-orange: #f3d3b2;
+	--accent-grey: #737d6d;     /* プロフィールタイトルなど */
+	--text-main: #333333;
+	--text-sub: #939393;        /* 資格リンクや補足テキスト */
+	--white: #FFFFFF;
+	--modal-overlay: rgba(0, 0, 0, 0.8);
+	--bg-border: #f7f7f7;
+
+	/* --- Additional Colors --- */
+	--text-dark: #2b2e38;        /* 濃いグレイ（モーダルホバーなど） */
+	--text-grey: #828282;        /* グレイ（副見出しなど） */
+	--text-grey-light: #B0B0B0;  /* 薄いグレイ（補足テキスト） */
+	--text-black: #000000;       /* 黒（ハンバーガーメニューなど） */
+	--bg-grey: #CCC;             /* グレイ背景（フッターなど） */
+
+	/* --- Loader Colors --- */
+	--loader-core: #e96;
+	--loader-petal: #fd8;
+
+	/* Layout */
+	--header-height: 50px;
+  
+	/* Fonts */
+	--font-main: 'Zen Maru Gothic', sans-serif;;
+
+	/* --- Font Sizes --- */
+	--fs-sm:  0.8rem;  /* info */
+	--fs-md:  1.0rem;    /* body (基準) */
+	--fs-l:  1.2rem;    /* subtitle */
+	--fs-lg:  2.0rem;    /* step */
+	--fs-xl:  2.4rem;    /* title */
+	--fs-2xl: 4.0rem;    /* huge */
+
+	/* 6の倍数スケール */
+	--sp-xs: 6px;
+	--sp-sm: 12px;
+	--sp-md: 28px;
+	--sp-lg: 36px; 
+	--sp-xl: 48px;
+	--sp-2xl: 60px; 
+	--sp-3xl: 72px; 
+	--sp-4xl: 84px; 
+
+	/* 角丸の定義 (8の倍数) */
+    --rd-sm: 8px;   /* ボタンや小さなタグ用 */
+    --rd-md: 16px;  /* カードやセクションの背景用 */
+
+	/* shadow */
+	--item-shadow: 0px 2px 4px rgb(0 0 0 / 16%);
+
+	/* --- Transitions --- */
+	--transition-base: 0.4s ease;
+}
