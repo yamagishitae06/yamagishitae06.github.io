@@ -324,7 +324,7 @@ background:linear-gradient(transparent 70%, #EDC01B 70%);
 }
 
 .title-group .title {
-  font-size: var(--fs-xl);
+  font-size: var(--fs-2xl);
   font-weight:bold;
   margin-bottom: 1rem;
   text-align: center;
@@ -979,16 +979,7 @@ more リンク
 html {
 	font-size: 16px;
 }
-	:root {
-	/* 8の倍数スケール */
-	--sp-xs: 8px;  /* 8px */
-	--sp-sm: 16px;  /* 16px */
-	--sp-md: 24px;  /* 24px */
-	--sp-lg: 32px;  /* 32px */
-	--sp-xl: 64px;  /* 64px */
-	--sp-2xl: 80px; /* 80px */
-	--sp-3xl: 96px; /* 96px */
-	}
+
 
 /*--------------------------------
 header

@@ -30,19 +30,20 @@
 	--fs-sm:  0.8rem;  /* info */
 	--fs-md:  1.0rem;    /* body (基準) */
 	--fs-l:  1.2rem;    /* subtitle */
-	--fs-lg:  2.0rem;    /* step */
-	--fs-xl:  2.4rem;    /* title */
-	--fs-2xl: 4.0rem;    /* huge */
+	--fs-lg:  1.8rem;    /* step */
+	--fs-xl:  2.0rem;    /* title */
+	--fs-2xl: 2.4rem;    /* huge */
+	--fs-2xl: 3rem;
 
 	/* 6の倍数スケール */
 	--sp-xs: 6px;
 	--sp-sm: 12px;
-	--sp-md: 28px;
-	--sp-lg: 36px; 
-	--sp-xl: 48px;
-	--sp-2xl: 60px; 
-	--sp-3xl: 72px; 
-	--sp-4xl: 84px; 
+	--sp-md: 18px;
+	--sp-lg: 24px; 
+	--sp-xl: 30px;
+	--sp-2xl: 36px; 
+	--sp-3xl: 42px; 
+	--sp-4xl: 48px; 
 
 	/* 角丸の定義 (8の倍数) */
     --rd-sm: 8px;   /* ボタンや小さなタグ用 */
@@ -53,4 +54,21 @@
 
 	/* --- Transitions --- */
 	--transition-base: 0.4s ease;
+}
+
+/******************************************/
+/***************************** tablet **/
+/******************************************/
+@media screen and (min-width: 768px) , print{
+	:root {
+		/* 8の倍数スケール */
+		--sp-xs: 8px;
+		--sp-sm: 16px;
+		--sp-md: 24px;
+		--sp-lg: 32px;
+		--sp-xl: 40px;
+		--sp-2xl: 48px;
+		--sp-3xl: 56px;
+		--sp-4xl: 64px;
+	}
 }
