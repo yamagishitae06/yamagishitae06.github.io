@@ -65,8 +65,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let activeCard = null;
     let isDragging = false;
+    let idleTimer = null;
+    let idleEnabled = true;
     let startX = 0, startY = 0, initialX = 0, initialY = 0;
     let lastX = 0, lastY = 0, lastTime = 0;
+
+    function stopIdleAnimation() {
+        if (idleTimer) {
+            clearInterval(idleTimer);
+            idleTimer = null;
+        }
+    }
 
     // 初期状態（重なり・回転・オフセット）を適用
     function applyBaseStyle(card) {
@@ -171,6 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         activeCard = card;
         isDragging = true;
+        stopIdleAnimation();
         card.classList.add('dragging');
         card.setPointerCapture && card.setPointerCapture(e.pointerId);
 
@@ -200,8 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const state = cardStates.get(card);
 
         const point = getPoint(e);
-        const dx = point.x - startX;
-        const dy = point.y - startY;
+        
+        const dragSpeed = 0.9;
+
+        const dx = (point.x - startX) * dragSpeed;
+        const dy = (point.y - startY) * dragSpeed;
 
         let targetX = initialX + dx;
         let targetY = initialY + dy;
@@ -210,12 +223,15 @@ document.addEventListener('DOMContentLoaded', () => {
         targetX = applyResistance(targetX, bounds.minX, bounds.maxX);
         targetY = applyResistance(targetY, bounds.minY, bounds.maxY);
 
-        state.currentX = targetX;
-        state.currentY = targetY;
+        const follow = 0.8; // 0～1（小さいほど遅れて付いてくる）
+
+        state.currentX += (targetX - state.currentX) * follow;
+        state.currentY += (targetY - state.currentY) * follow;
 
         const def = baseDefs.get(card);
         card.style.transform =
-            `translate(${state.currentX}px, ${state.currentY}px) rotate(${def.rotate}deg)`;
+            `translate(${def.offsetX + state.currentX}px,
+            ${def.offsetY + state.currentY}px) rotate(${def.rotate}deg)`;
 
         const now = Date.now();
         const dt = now - lastTime;
@@ -273,7 +289,8 @@ document.addEventListener('DOMContentLoaded', () => {
         state.currentY += state.velocityY;
 
         card.style.transform =
-            `translate(${state.currentX}px, ${state.currentY}px) rotate(${def.rotate}deg)`;
+            `translate(${def.offsetX + state.currentX}px,
+            ${def.offsetY + state.currentY}px) rotate(${def.rotate}deg)`;
 
         const settled =
             Math.abs(state.velocityX) < minVelocity &&
@@ -285,8 +302,19 @@ document.addEventListener('DOMContentLoaded', () => {
             state.currentX = clampValue(state.currentX, bounds.minX, bounds.maxX);
             state.currentY = clampValue(state.currentY, bounds.minY, bounds.maxY);
             card.style.transform =
-                `translate(${state.currentX}px, ${state.currentY}px) rotate(${def.rotate}deg)`;
-            state.animationFrame = null;
+                `translate(${def.offsetX + state.currentX}px,
+                ${def.offsetY + state.currentY}px) rotate(${def.rotate}deg)`;
+                state.animationFrame = null;
+                if (allCards.every(card => {
+                    const s = cardStates.get(card);
+                    return (
+                        Math.abs(s.currentX) < 0.5 &&
+                        Math.abs(s.currentY) < 0.5 &&
+                        !s.animationFrame
+                    );
+                })) {
+                    startIdleAnimation();
+                }
             return;
         }
 
@@ -324,10 +352,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 初期化
     initStack();
 
-    // カードがぴょこぴょこする
-    let idleTimer = null;
-
     function startIdleAnimation() {
+
+        if (idleTimer) return;
+
         idleTimer = setInterval(() => {
 
             // ドラッグ中は動かさない
@@ -343,14 +371,16 @@ document.addEventListener('DOMContentLoaded', () => {
             // 出る
             card.style.transition = "transform 0.25s ease";
             card.style.transform =
-                `translate(${state.currentX - 4}px, ${state.currentY + 5}px)
-                rotate(${def.rotate + -5}deg)`;
+                `translate(${def.offsetX + state.currentX - 4}px,
+                        ${def.offsetY + state.currentY + 5}px)
+                rotate(${def.rotate - 5}deg)`;
 
             // 0.8秒静止してから戻る
             setTimeout(() => {
                 card.style.transition = "transform 0.25s ease";
                 card.style.transform =
-                    `translate(${state.currentX}px, ${state.currentY}px)
+                    `translate(${def.offsetX + state.currentX}px,
+                    ${def.offsetY + state.currentY}px)
                     rotate(${def.rotate}deg)`;
             }, 1050); // 250ms(出る) + 800ms(停止)
 
