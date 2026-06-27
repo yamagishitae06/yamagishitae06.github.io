@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const baseDefs = new Map(); // カードごとの初期オフセット・回転を保持
 
-    const rotations = [0, -0.5, 1, -1.5];
+    const rotations = [0, -1, 1.5, -1.5];
 
     allCards.forEach(card => {
         const index = getCardIndex(card); // 1,2,3,4
@@ -323,4 +323,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 初期化
     initStack();
+
+    // カードがぴょこぴょこする
+    let idleTimer = null;
+
+    function startIdleAnimation() {
+        idleTimer = setInterval(() => {
+
+            // ドラッグ中は動かさない
+            if (isDragging) return;
+
+            // 上から2枚目
+            const card = allCards[allCards.length - 2];
+            if (!card) return;
+
+            const state = cardStates.get(card);
+            const def = baseDefs.get(card);
+
+            // 出る
+            card.style.transition = "transform 0.25s ease";
+            card.style.transform =
+                `translate(${state.currentX - 4}px, ${state.currentY + 5}px)
+                rotate(${def.rotate + -5}deg)`;
+
+            // 0.8秒静止してから戻る
+            setTimeout(() => {
+                card.style.transition = "transform 0.25s ease";
+                card.style.transform =
+                    `translate(${state.currentX}px, ${state.currentY}px)
+                    rotate(${def.rotate}deg)`;
+            }, 1050); // 250ms(出る) + 800ms(停止)
+
+        }, 4000); // 4秒おき
+    }
+
+    startIdleAnimation();
 });
