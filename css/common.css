@@ -150,7 +150,7 @@ h5{
 }
 
 .orange{
-	color: #EF831A;
+	color: var(--primary-orange);
 }
 
 
@@ -159,8 +159,8 @@ section {
 	margin-bottom: 25vh;
 }
 
-.contents-box{
-	width: 90%;
+.contents-box {
+	width: 95%;
 	margin: 0 auto var(--sp-xl) auto;
 }
 
@@ -174,7 +174,7 @@ background:linear-gradient(transparent 70%, var
 }
 
 .marker-yellow{
-background:linear-gradient(transparent 70%, #EDC01B 70%);
+background:linear-gradient(transparent 70%, var(--accent-yellow) 70%);
 }
 
 /*--------------------------------
@@ -205,7 +205,7 @@ background:linear-gradient(transparent 70%, #EDC01B 70%);
 #triangle01{
 	top:20%;
 	left: 5%;
-	border-bottom: 20px solid #EDC01B; 
+	border-bottom: 20px solid var(--accent-yellow); 
 	border-right: 12px solid transparent; /* 左辺の長さ */
   border-left: 12px solid transparent; /* 右辺の長さ */
 	transform: rotate(45deg);
@@ -237,7 +237,7 @@ background:linear-gradient(transparent 70%, #EDC01B 70%);
 	width: 5px; /* 横棒の長さ */
 	height: 20px; /* 横棒の幅 */
 	transform: rotate(90deg); /* 角度 */
-	background: #119D63; /* 横棒の色 */
+	background: var(--accent-green); /* 横棒の色 */
 }
 	
 .batu02 {
@@ -245,7 +245,7 @@ background:linear-gradient(transparent 70%, #EDC01B 70%);
 	right: 5%;
 	width: 5px; /* 縦棒の幅 */
 	height: 20px; /* 縦棒の長さ */
-	background: #E64112; /* 縦棒の色 */
+	background: var(--accent-red); /* 縦棒の色 */
 	transform: rotate(0deg); /* 角度 */
 }
 .batu02::after {
@@ -256,13 +256,13 @@ background:linear-gradient(transparent 70%, #EDC01B 70%);
 	width: 5px; /* 横棒の長さ */
 	height: 20px; /* 横棒の幅 */
 	transform: rotate(90deg); /* 角度 */
-	background: #E64112; /* 横棒の色 */
+	background: var(--accent-red); /* 横棒の色 */
 	}
 
 .square01 {
 	width: 20px;
 	height: 20px;
-	background: #E64112;
+	background: var(--accent-red);
 	top: 80%;
 	left: 3%;
 }
@@ -270,7 +270,7 @@ background:linear-gradient(transparent 70%, #EDC01B 70%);
 .square02 {
 	width: 20px;
 	height: 20px;
-	background: #119D63;
+	background: var(--accent-green);
 	top: 18%;
 	right: 3%;
 }
@@ -279,7 +279,7 @@ background:linear-gradient(transparent 70%, #EDC01B 70%);
 	width: 15px;
 	height: 15px;
 	border-radius: 50%;
-	background: #317692;
+	background: var(--accent-blue);
 	top: 40%;
 	left: 4%;
 }
@@ -288,7 +288,7 @@ background:linear-gradient(transparent 70%, #EDC01B 70%);
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
-	background: #119D63;
+	background: var(--accent-green);
 	top: 12%;
 	left: 3%;
 }
@@ -297,7 +297,7 @@ background:linear-gradient(transparent 70%, #EDC01B 70%);
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
-	background: #EDC01B;
+	background: var(--accent-yellow);
 	top: 60%;
 	right: 5%;
 }
@@ -307,7 +307,7 @@ background:linear-gradient(transparent 70%, #EDC01B 70%);
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
-	background: #E64112;
+	background: var(--accent-red);
 	top: 70%;
 	right: 2%;
 }
@@ -488,7 +488,7 @@ footer{
 	align-items: center;
 	width: 100%;
 	height: 40px;
-	background-color:#CCC;
+	background-color:var(--bg-grey);
 	margin-top: var(--sp-2xl); 
 	margin-bottom: 0;
 }
@@ -955,7 +955,7 @@ more リンク
 	max-width: 90vw;
 	max-height: 90vh;
 	padding: 10px 30px 25px;
-	background: #fff;
+	background: var(--white);
 	box-shadow: 0 0 30px rgba(0, 0, 0, .6);
 	border-radius: var(--rd-md);
 }

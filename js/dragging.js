@@ -23,11 +23,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const baseDefs = new Map(); // カードごとの初期オフセット・回転を保持
 
+    const rotations = [0, -0.5, 1, -1.5];
+
     allCards.forEach(card => {
-        const index = getCardIndex(card); // 1, 2, 3, 4
-        const offset = (index - 1) * 3;    // 少しずつズラす(px)
-        const rotate = -(index - 1) * 0.5; // -0.5degずつ
-        baseDefs.set(card, { offsetX: offset, offsetY: offset, rotate });
+        const index = getCardIndex(card); // 1,2,3,4
+        const offset = (index - 1) * 3;
+
+        baseDefs.set(card, {
+            offsetX: offset,
+            offsetY: offset,
+            rotate: rotations[index - 1]
+        });
     });
 
     // 各カードの状態（現在位置・速度・アニメーション）
@@ -44,12 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 慣性の減衰率（1に近いほど長く滑り、低いほどすぐ止まる）
-    const friction = 0.95;
+    const friction = 1;
     // この速度未満になったらアニメーションを終了する閾値(px/frame程度)
     const minVelocity = 0.5;
     // 範囲外へ出たカードを内側へ戻す「バネ」の強さ
     // 値を大きくすると勢いよく戻り、小さいとゆっくり戻る
-    const springStrength = 0.1;
+    const springStrength = 0.05;
     // バネの跳ね返り時の減衰率
     // 1に近いほどよく跳ね、低いほどすぐ収束する
     const springDamping = 0.5;

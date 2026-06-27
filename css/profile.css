@@ -26,26 +26,13 @@ profile
     position: relative;
     width: 90%;
 	min-width: 200px;
-	max-width: 400px;
+	max-width: 300px;
     height: auto;
     margin: auto;
     aspect-ratio: 1 / 1.654;
 }
 
 /* 本体カード（ドラッグ可能） */
-.profile-card {
-    width: 100%;
-	min-width: 200px;
-    height: 100%;
-	box-sizing: border-box;
-	padding: var(--sp-md);
-    background-color: var(--white);
-    box-shadow: var(--item-shadow);
-    border-radius: var(--rd-md);
-	aspect-ratio: 1 / 1.654;
-	overflow: hidden;
-}
-
 .profile-card {
 	position: absolute;
     top: 0;
@@ -61,10 +48,12 @@ profile
     display: flex;
     flex-direction: column;
     justify-content: center;
+	gap: var(--sp-md);
     text-align: center;
     cursor: grab;
     user-select: none;
     touch-action: none;
+	overflow: hidden;
 
     /* JSが座標を直接書き込むため、初期値はJS側で設定する */
     will-change: transform;
@@ -72,11 +61,7 @@ profile
 
 .profile-img-box {
 	display: flex;
-	flex: 1; 
 	min-height: 0;
-	width: 60%;
-	max-width: 200px;
-	max-height: 200px;
 	text-align: center;
 	margin: 0 auto;
 	padding-bottom: var(--sp-sm);
@@ -84,34 +69,38 @@ profile
 
 .profile-img-box img{
 	display: block;
-	width: 100%;
-	height: auto;
+	width: 150px;
+	height: 150px;
 	aspect-ratio: 1 / 1;
 	object-fit: contain;
 	border-radius: var(--rd-sm);
+	pointer-events: none;
 }
 
 .profile-txt-box {
 	max-width: 400px;
 	display: flex;
 	flex-direction: column;
+	gap: var(--sp-md);
 	text-align: center;
 	width: 100%;
-	padding-left: var(--sp-xs);
 }
 
+.profile-name-box {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	font-weight: 600;
+	text-align: center;
+	color: var(--primary-orange);
+}
 .profile-name {
 	font-size: var(--fs-lg);
-	font-weight: 600;
-	margin-bottom: var(--sp-xs);
-	text-align: center;
-	color: var(--accent-grey);
 }
 
 .profile-name-sub {
 	font-size: var(--fs-l);
-	font-weight: 400;
-	color: var(--text-sub);
+	opacity: 0.5;
 }
 
 .profile-txt {
@@ -128,19 +117,43 @@ profile
     transition: none !important;
 }
 
-/* 一番奥（3枚目）：少し回転とズレを大きく */
-.profile-card._04 {
-    transform: translate(6px, 6px) rotate(-3.5deg);
+/* 2枚目 */
+.profile-card._02 {
+    transform: translate(1.5px, 1.5px) rotate(-0.5deg);
 }
 
-/* 中間（2枚目） */
+.profile-card._02 .profile-name {
+	color: var(--accent-blue);
+}
+
+.profile-card._02 .profile-name-sub {
+	color: var(--accent-blue);
+}
+
+/* 3枚  */
 .profile-card._03 {
     transform: translate(3px, 3px) rotate(-2deg);
 }
 
-/* 一番手前の束（1枚目、本体のすぐ下） */
-.profile-card._02 {
-    transform: translate(1.5px, 1.5px) rotate(-0.5deg);
+.profile-card._03 .profile-name {
+	color: var(--accent-yellow);
+}
+
+.profile-card._03 .profile-name-sub {
+	color: var(--accent-yellow);
+}
+
+/* 4枚目 */
+.profile-card._04 {
+    transform: translate(6px, 6px) rotate(-3.5deg);
+}
+
+.profile-card._04 .profile-name {
+	color: var(--accent-red);
+}
+
+.profile-card._04 .profile-name-sub {
+	color: var(--accent-red);
 }
 
 #profile-link{
@@ -439,7 +452,8 @@ width: 250px;
 
 .card-stack {
 	position: relative;
-	max-width: 800px;
+	min-width: 600px;
+	max-width: 600px;
     margin: auto;
     aspect-ratio: 1.654 / 1;
 }
@@ -616,4 +630,20 @@ section.profile .pr:last-child {
 
 .read-more-link:hover::before {
 	left: 0;
+}
+
+@media screen and (max-width: 280px) , print{
+	.card-stack {
+		aspect-ratio: auto;
+	}
+
+	.profile-card {
+		aspect-ratio: auto;
+		width: fit-content;
+		height: fit-content;
+	}
+
+	.profile-img-box img {
+		width: 100%;
+	}
 }

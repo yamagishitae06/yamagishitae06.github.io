@@ -8,6 +8,8 @@
 	--white: #FFFFFF;
 	--modal-overlay: rgba(0, 0, 0, 0.8);
 	--bg-border: #f7f7f7;
+	--accent-red: #E64112;
+	--accent-yellow: #EDC01B;
 	--accent-blue: #317692;
 	--accent-green: #119D63;
 
@@ -73,5 +75,19 @@
 		--sp-2xl: 48px;
 		--sp-3xl: 56px;
 		--sp-4xl: 64px;
+	}
+}
+
+@media screen and (max-width: 280px) , print{
+	:root {
+		/* 2の倍数スケール */
+		--sp-xs: 2px;
+		--sp-sm: 4px;
+		--sp-md: 6px;
+		--sp-lg: 8px;
+		--sp-xl: 10px;
+		--sp-2xl: 12px;
+		--sp-3xl: 14px;
+		--sp-4xl: 16px;
 	}
 }
