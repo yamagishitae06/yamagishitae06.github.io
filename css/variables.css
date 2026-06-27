@@ -8,6 +8,8 @@
 	--white: #FFFFFF;
 	--modal-overlay: rgba(0, 0, 0, 0.8);
 	--bg-border: #f7f7f7;
+	--accent-blue: #317692;
+	--accent-green: #119D63;
 
 	/* --- Additional Colors --- */
 	--text-dark: #2b2e38;        /* 濃いグレイ（モーダルホバーなど） */
@@ -19,6 +21,7 @@
 	/* --- Loader Colors --- */
 	--loader-core: #e96;
 	--loader-petal: #fd8;
+
 
 	/* Layout */
 	--header-height: 50px;

@@ -12,6 +12,7 @@ html{
 	scroll-padding-top: var(--header-height);
 	-webkit-overfreelance-activity-scrolling: touch;
 	cursor: none;
+	overflow-x: hidden;
 }
 
 /* 固定ヘッダーを考慮したアンカースクロール調整 */
@@ -154,7 +155,8 @@ h5{
 
 
 section {
-	margin-bottom: var(--sp-3xl);
+	padding-bottom: var(--sp-2xl);
+	margin-bottom: 25vh;
 }
 
 .contents-box{
@@ -167,7 +169,8 @@ background:linear-gradient(transparent 70%, var(--primary-orange) 70%);
 }
 
 .marker-blue{
-background:linear-gradient(transparent 70%, #317692 70%);
+background:linear-gradient(transparent 70%, var
+(--accent-blue) 70%);
 }
 
 .marker-yellow{
@@ -212,7 +215,7 @@ background:linear-gradient(transparent 70%, #EDC01B 70%);
 #triangle02{
 	top:82%;
 	right: 5%;
-	border-bottom: 25px solid #317692; 
+	border-bottom: 25px solid var(--accent-blue); 
 	border-right: 15px solid transparent; /* 左辺の長さ */
   border-left: 15px solid transparent; /* 右辺の長さ */
 	transform: rotate(0deg);
@@ -223,7 +226,7 @@ background:linear-gradient(transparent 70%, #EDC01B 70%);
 	left: 3%;
 	width: 5px; /* 縦棒の幅 */
 	height: 20px; /* 縦棒の長さ */
-	background: #119D63; /* 縦棒の色 */
+	background: var(--accent-green); /* 縦棒の色 */
 	transform: rotate(-40deg); /* 角度 */
 }
 .batu::after {

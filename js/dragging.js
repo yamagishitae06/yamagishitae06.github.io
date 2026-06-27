@@ -1,124 +1,133 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const card = document.getElementById('profileCard');
-    const container = document.getElementById('profile'); // 移動範囲の基準にするセクション
+    const stack = document.querySelector('.card-stack');
+    const container = document.querySelector('.card-stack-box');
+    
 
-    if (!card) {
-        console.error('profileCard が見つかりません');
-        return;
-    }
-    if (!container) {
-        console.error('profile セクションが見つかりません');
+    if (!container || !stack) {
+        console.error('card-stack-box セクションまたは card-stack が見つかりません');
         return;
     }
 
-    let isDragging = false;
-    let startX = 0;
-    let startY = 0;
-    let initialX = 0;
-    let initialY = 0;
-    let currentX = 0;
-    let currentY = 0;
+    // ._01 ~ ._04 を取得し、初期の重なり順（配列の最後 = 最前面）に並べる
+    const allCards = Array.from(stack.querySelectorAll('.profile-card'));
 
-    let velocityX = 0;
-    let velocityY = 0;
-    let lastX = 0;
-    let lastY = 0;
-    let lastTime = 0;
-    let animationFrame = null;
+    // 初期状態の定義：番号が小さいほど手前・回転が小さい
+    // _01:0deg, _02:-0.5deg, _03:-1.0deg, _04:-1.5deg
+    function getCardIndex(card) {
+        const match = card.className.match(/_0?(\d+)/);
+        return match ? parseInt(match[1], 10) : 1;
+    }
 
+    // 配列を「奥(_04)→手前(_01)」の順に並べ替える（最後の要素が最前面）
+    allCards.sort((a, b) => getCardIndex(b) - getCardIndex(a));
+
+    const baseDefs = new Map(); // カードごとの初期オフセット・回転を保持
+
+    allCards.forEach(card => {
+        const index = getCardIndex(card); // 1, 2, 3, 4
+        const offset = (index - 1) * 3;    // 少しずつズラす(px)
+        const rotate = -(index - 1) * 0.5; // -0.5degずつ
+        baseDefs.set(card, { offsetX: offset, offsetY: offset, rotate });
+    });
+
+    // 各カードの状態（現在位置・速度・アニメーション）
+    const cardStates = new Map();
+    allCards.forEach(card => {
+        cardStates.set(card, {
+            currentX: 0,
+            currentY: 0,
+            velocityX: 0,
+            velocityY: 0,
+            animationFrame: null,
+            baseRect: null
+        });
+    });
+
+    // 慣性の減衰率（1に近いほど長く滑り、低いほどすぐ止まる）
     const friction = 0.95;
-    const minVelocity = 0.6;
+    // この速度未満になったらアニメーションを終了する閾値(px/frame程度)
+    const minVelocity = 0.5;
+    // 範囲外へ出たカードを内側へ戻す「バネ」の強さ
+    // 値を大きくすると勢いよく戻り、小さいとゆっくり戻る
     const springStrength = 0.1;
-    const springDamping = 0.2;
+    // バネの跳ね返り時の減衰率
+    // 1に近いほどよく跳ね、低いほどすぐ収束する
+    const springDamping = 0.5;
+    // ドラッグ中に範囲外へ引っ張ったときの抵抗率
+    // 1に近いほど抵抗が少なく、0に近いほどほとんど伸びなくなる
     const dragResistance = 0.4;
 
-    let baseRect = null;
+    let activeCard = null;
+    let isDragging = false;
+    let startX = 0, startY = 0, initialX = 0, initialY = 0;
+    let lastX = 0, lastY = 0, lastTime = 0;
 
-    function updateBaseRect() {
+    // 初期状態（重なり・回転・オフセット）を適用
+    function applyBaseStyle(card) {
+        const def = baseDefs.get(card);
+        const state = cardStates.get(card);
+        state.currentX = 0;
+        state.currentY = 0;
+        state.velocityX = 0;
+        state.velocityY = 0;
+        card.style.transform =
+            `translate(${def.offsetX}px, ${def.offsetY}px) rotate(${def.rotate}deg)`;
+    }
+
+    function applyZIndex() {
+        // 配列の順番どおりにz-indexを振る（最後が最前面）
+        allCards.forEach((card, i) => {
+            card.style.zIndex = i + 1;
+        });
+    }
+
+    function initStack(animate = false) {
+        allCards.forEach(card => {
+            if (animate) {
+                card.style.transition = 'transform 0.6s ease';
+            }
+            applyBaseStyle(card);
+        });
+        applyZIndex();
+
+        if (animate) {
+            // アニメーション終了後にtransitionを解除（次回ドラッグに影響しないように）
+            setTimeout(() => {
+                allCards.forEach(card => {
+                    card.style.transition = '';
+                });
+            }, 600);
+        }
+    }
+
+    // 現在のtransformを基準に、回転を含まないbaseRectを測る
+    function updateBaseRect(card) {
+        const state = cardStates.get(card);
         const prevTransform = card.style.transform;
-        card.style.transform = 'translate(0px, 0px)';
-        baseRect = card.getBoundingClientRect();
+        card.style.transform = 'translate(0px, 0px) rotate(0deg)';
+        state.baseRect = card.getBoundingClientRect();
         card.style.transform = prevTransform;
     }
 
     function getPoint(e) {
-        if (e.touches && e.touches.length > 0) {
-            return { x: e.touches[0].clientX, y: e.touches[0].clientY };
-        }
         return { x: e.clientX, y: e.clientY };
     }
 
-    // 境界を「window」ではなく「profileセクション」基準に変更
-    function getBounds() {
-        if (!baseRect) updateBaseRect();
+    function getBounds(card) {
+        const state = cardStates.get(card);
+        if (!state.baseRect) updateBaseRect(card);
         const containerRect = container.getBoundingClientRect();
 
         return {
-            minX: containerRect.left - baseRect.left,
-            maxX: containerRect.right - baseRect.right,
-            minY: containerRect.top - baseRect.top,
-            maxY: containerRect.bottom - baseRect.bottom
+            minX: containerRect.left - state.baseRect.left,
+            maxX: containerRect.right - state.baseRect.right,
+            minY: containerRect.top - state.baseRect.top,
+            maxY: containerRect.bottom - state.baseRect.bottom
         };
     }
 
     function clampValue(v, min, max) {
         return Math.min(Math.max(v, min), max);
-    }
-
-    function dragStart(e) {
-        if (animationFrame) {
-            cancelAnimationFrame(animationFrame);
-            animationFrame = null;
-        }
-
-        updateBaseRect();
-
-        isDragging = true;
-        card.classList.add('dragging');
-
-        const point = getPoint(e);
-        startX = point.x;
-        startY = point.y;
-        initialX = currentX;
-        initialY = currentY;
-
-        lastX = point.x;
-        lastY = point.y;
-        lastTime = Date.now();
-        velocityX = 0;
-        velocityY = 0;
-    }
-
-    function dragMove(e) {
-        if (!isDragging) return;
-        e.preventDefault();
-
-        const point = getPoint(e);
-        const dx = point.x - startX;
-        const dy = point.y - startY;
-
-        let targetX = initialX + dx;
-        let targetY = initialY + dy;
-
-        const bounds = getBounds();
-
-        targetX = applyResistance(targetX, bounds.minX, bounds.maxX);
-        targetY = applyResistance(targetY, bounds.minY, bounds.maxY);
-
-        currentX = targetX;
-        currentY = targetY;
-
-        card.style.transform = `translate(${currentX}px, ${currentY}px)`;
-
-        const now = Date.now();
-        const dt = now - lastTime;
-        if (dt > 0) {
-            velocityX = (point.x - lastX) / dt * 16;
-            velocityY = (point.y - lastY) / dt * 16;
-        }
-        lastX = point.x;
-        lastY = point.y;
-        lastTime = now;
     }
 
     function applyResistance(value, min, max) {
@@ -133,73 +142,179 @@ document.addEventListener('DOMContentLoaded', () => {
         return value;
     }
 
-    function dragEnd() {
-        if (!isDragging) return;
-        isDragging = false;
-        card.classList.remove('dragging');
-
-        animate();
+    // カードを最前面に移動（配列とz-indexを更新）
+    function bringToFront(card) {
+        const idx = allCards.indexOf(card);
+        if (idx !== -1) {
+            allCards.splice(idx, 1);
+            allCards.push(card);
+            applyZIndex();
+        }
     }
 
-    function animate() {
-        const bounds = getBounds();
+    function dragStart(e) {
+        const card = e.currentTarget;
+
+        if (animationFrame_for(card)) {
+            cancelAnimationFrame(cardStates.get(card).animationFrame);
+            cardStates.get(card).animationFrame = null;
+        }
+
+        bringToFront(card);
+        updateBaseRect(card);
+
+        activeCard = card;
+        isDragging = true;
+        card.classList.add('dragging');
+        card.setPointerCapture && card.setPointerCapture(e.pointerId);
+
+        const state = cardStates.get(card);
+        const point = getPoint(e);
+        startX = point.x;
+        startY = point.y;
+        initialX = state.currentX;
+        initialY = state.currentY;
+
+        lastX = point.x;
+        lastY = point.y;
+        lastTime = Date.now();
+        state.velocityX = 0;
+        state.velocityY = 0;
+    }
+
+    function animationFrame_for(card) {
+        return cardStates.get(card).animationFrame;
+    }
+
+    function dragMove(e) {
+        if (!isDragging || !activeCard) return;
+        e.preventDefault();
+
+        const card = activeCard;
+        const state = cardStates.get(card);
+
+        const point = getPoint(e);
+        const dx = point.x - startX;
+        const dy = point.y - startY;
+
+        let targetX = initialX + dx;
+        let targetY = initialY + dy;
+
+        const bounds = getBounds(card);
+        targetX = applyResistance(targetX, bounds.minX, bounds.maxX);
+        targetY = applyResistance(targetY, bounds.minY, bounds.maxY);
+
+        state.currentX = targetX;
+        state.currentY = targetY;
+
+        const def = baseDefs.get(card);
+        card.style.transform =
+            `translate(${state.currentX}px, ${state.currentY}px) rotate(${def.rotate}deg)`;
+
+        const now = Date.now();
+        const dt = now - lastTime;
+        if (dt > 0) {
+            state.velocityX = (point.x - lastX) / dt * 16;
+            state.velocityY = (point.y - lastY) / dt * 16;
+        }
+        lastX = point.x;
+        lastY = point.y;
+        lastTime = now;
+    }
+
+    function dragEnd(e) {
+        if (!isDragging || !activeCard) return;
+        const card = activeCard;
+        isDragging = false;
+        card.classList.remove('dragging');
+        card.releasePointerCapture && e && card.releasePointerCapture(e.pointerId);
+
+        animate(card);
+        activeCard = null;
+    }
+
+    function animate(card) {
+        const state = cardStates.get(card);
+        const def = baseDefs.get(card);
+        const bounds = getBounds(card);
 
         let forceX = 0;
         let forceY = 0;
 
-        if (currentX < bounds.minX) {
-            forceX = (bounds.minX - currentX) * springStrength;
-        } else if (currentX > bounds.maxX) {
-            forceX = (bounds.maxX - currentX) * springStrength;
+        if (state.currentX < bounds.minX) {
+            forceX = (bounds.minX - state.currentX) * springStrength;
+        } else if (state.currentX > bounds.maxX) {
+            forceX = (bounds.maxX - state.currentX) * springStrength;
         }
 
-        if (currentY < bounds.minY) {
-            forceY = (bounds.minY - currentY) * springStrength;
-        } else if (currentY > bounds.maxY) {
-            forceY = (bounds.maxY - currentY) * springStrength;
+        if (state.currentY < bounds.minY) {
+            forceY = (bounds.minY - state.currentY) * springStrength;
+        } else if (state.currentY > bounds.maxY) {
+            forceY = (bounds.maxY - state.currentY) * springStrength;
         }
 
         if (forceX !== 0 || forceY !== 0) {
-            velocityX += forceX;
-            velocityY += forceY;
-            velocityX *= springDamping;
-            velocityY *= springDamping;
+            state.velocityX += forceX;
+            state.velocityY += forceY;
+            state.velocityX *= springDamping;
+            state.velocityY *= springDamping;
         } else {
-            velocityX *= friction;
-            velocityY *= friction;
+            state.velocityX *= friction;
+            state.velocityY *= friction;
         }
 
-        currentX += velocityX;
-        currentY += velocityY;
+        state.currentX += state.velocityX;
+        state.currentY += state.velocityY;
 
-        card.style.transform = `translate(${currentX}px, ${currentY}px)`;
+        card.style.transform =
+            `translate(${state.currentX}px, ${state.currentY}px) rotate(${def.rotate}deg)`;
 
         const settled =
-            Math.abs(velocityX) < minVelocity &&
-            Math.abs(velocityY) < minVelocity &&
-            currentX >= bounds.minX && currentX <= bounds.maxX &&
-            currentY >= bounds.minY && currentY <= bounds.maxY;
+            Math.abs(state.velocityX) < minVelocity &&
+            Math.abs(state.velocityY) < minVelocity &&
+            state.currentX >= bounds.minX && state.currentX <= bounds.maxX &&
+            state.currentY >= bounds.minY && state.currentY <= bounds.maxY;
 
         if (settled) {
-            currentX = clampValue(currentX, bounds.minX, bounds.maxX);
-            currentY = clampValue(currentY, bounds.minY, bounds.maxY);
-            card.style.transform = `translate(${currentX}px, ${currentY}px)`;
-            animationFrame = null;
+            state.currentX = clampValue(state.currentX, bounds.minX, bounds.maxX);
+            state.currentY = clampValue(state.currentY, bounds.minY, bounds.maxY);
+            card.style.transform =
+                `translate(${state.currentX}px, ${state.currentY}px) rotate(${def.rotate}deg)`;
+            state.animationFrame = null;
             return;
         }
 
-        animationFrame = requestAnimationFrame(animate);
+        state.animationFrame = requestAnimationFrame(() => animate(card));
     }
 
+    // 各カードにPointer Eventsを設定
+    allCards.forEach(card => {
+        card.addEventListener('pointerdown', dragStart);
+    });
+    document.addEventListener('pointermove', dragMove);
+    document.addEventListener('pointerup', dragEnd);
+    document.addEventListener('pointercancel', dragEnd);
+
+    // リサイズ時に初期状態へ戻す
+    let resizeTimer = null;
     window.addEventListener('resize', () => {
-        updateBaseRect();
+        if (resizeTimer) clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            allCards.forEach(card => {
+                const state = cardStates.get(card);
+                if (state.animationFrame) {
+                    cancelAnimationFrame(state.animationFrame);
+                    state.animationFrame = null;
+                }
+                state.baseRect = null; // 再計測させる
+            });
+
+            // 重なり順も元の番号順(_01が最前面)に戻す
+            allCards.sort((a, b) => getCardIndex(b) - getCardIndex(a));
+            initStack(true); // ← true を渡してアニメーションさせる
+        }, 80);
     });
 
-    card.addEventListener('mousedown', dragStart);
-    document.addEventListener('mousemove', dragMove);
-    document.addEventListener('mouseup', dragEnd);
-
-    card.addEventListener('touchstart', dragStart, { passive: false });
-    document.addEventListener('touchmove', dragMove, { passive: false });
-    document.addEventListener('touchend', dragEnd);
+    // 初期化
+    initStack();
 });
