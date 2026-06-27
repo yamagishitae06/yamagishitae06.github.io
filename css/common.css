@@ -1022,15 +1022,10 @@ html {
 	font-size: 18px;
 }
 
-
 body {
 /* 方眼紙模様に必須のスタイル */
   background-size: 40px 40px;/*1マスのサイズ*/
 }
-
-	.fuwa-animation{
-		animation: none;
-	}
 
 #cursor{
 	display: block;
@@ -1043,5 +1038,4 @@ footer{
 	height: 80px;
 	margin-top: 80px; 
 }
-
 }
