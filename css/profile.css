@@ -413,6 +413,7 @@ width: 250px;
 
 .qualification a{
 	color: var(--text-sub);
+	text-decoration: underline;
 }
 
 
