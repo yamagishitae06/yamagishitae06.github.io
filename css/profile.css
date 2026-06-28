@@ -70,10 +70,10 @@ profile
 	width: 150px;
 	height: 150px;
 	aspect-ratio: 1 / 1;
-	object-fit: contain;
 	border-radius: var(--rd-sm);
 	pointer-events: none;
-	border: solid 4px var(--primary-orange);
+	border: solid 4px #EF9844;
+	background-color: #EF9844;
 }
 
 .profile-txt-box {
@@ -123,7 +123,8 @@ profile
 }
 
 .profile-card._02 .profile-img-box img {
-	border-color: var(--accent-blue);
+	border-color: #538092;
+	background-color: #538092;
 }
 
 .profile-card._02 .profile-name {
@@ -140,7 +141,8 @@ profile
 }
 
 .profile-card._03 .profile-img-box img {
-	border-color: var(--accent-yellow);
+	border-color: #EDCA49;
+	background-color: #EDCA49;
 }
 
 .profile-card._03 .profile-name {
@@ -157,7 +159,8 @@ profile
 }
 
 .profile-card._04 .profile-img-box img {
-	border-color: var(--accent-red);
+	border-color: #E67B5E;
+	background-color: #E67B5E;
 }
 
 .profile-card._04 .profile-name {
