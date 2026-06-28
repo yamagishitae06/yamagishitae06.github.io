@@ -54,6 +54,7 @@ profile
     user-select: none;
     touch-action: none;
 	overflow: hidden;
+	border: solid 8px #edd8c4;
 
     /* JSが座標を直接書き込むため、初期値はJS側で設定する */
     will-change: transform;
@@ -72,8 +73,8 @@ profile
 	aspect-ratio: 1 / 1;
 	border-radius: var(--rd-sm);
 	pointer-events: none;
-	border: solid 4px #EF9844;
-	background-color: #EF9844;
+	border: solid 4px #EFA054;
+	background-color: #EFA054;
 }
 
 .profile-txt-box {
@@ -109,7 +110,9 @@ profile
 }
 
 .profile-txt span {
+	display: inline;
 	text-align: start;
+	color: #cf8948;
 }
 
 .profile-card.dragging {
@@ -120,11 +123,12 @@ profile
 /* 2枚目 */
 .profile-card._02 {
     transform: translate(1.5px, 1.5px) rotate(-0.5deg);
+	border-color: #c4d4ed;
 }
 
 .profile-card._02 .profile-img-box img {
-	border-color: #538092;
-	background-color: #538092;
+	border-color: #5F8492;
+	background-color: #5F8492;
 }
 
 .profile-card._02 .profile-name {
@@ -135,14 +139,19 @@ profile
 	color: var(--accent-blue);
 }
 
+.profile-card._02 .profile-txt span {
+	color: #277896
+}
+
 /* 3枚  */
 .profile-card._03 {
     transform: translate(3px, 3px) rotate(-2deg);
+	border-color: #f7f6a5;
 }
 
 .profile-card._03 .profile-img-box img {
-	border-color: #EDCA49;
-	background-color: #EDCA49;
+	border-color: #EDCE5B;
+	background-color: #EDCE5B;
 }
 
 .profile-card._03 .profile-name {
@@ -153,9 +162,14 @@ profile
 	color: var(--accent-yellow);
 }
 
+.profile-card._03 .profile-txt span {
+	color: #cbb04c;
+}
+
 /* 4枚目 */
 .profile-card._04 {
     transform: translate(6px, 6px) rotate(-3.5deg);
+	border-color: #edd5c4;
 }
 
 .profile-card._04 .profile-img-box img {
@@ -165,6 +179,10 @@ profile
 
 .profile-card._04 .profile-name {
 	color: var(--accent-red);
+}
+
+.profile-card._04 .profile-txt span {
+	color: #ca6c52;
 }
 
 .profile-card._04 .profile-name-sub {
