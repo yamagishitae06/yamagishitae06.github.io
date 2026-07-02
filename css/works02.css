@@ -112,7 +112,7 @@
 
 #Graphic ul {
 	display: flex;
-	width: 30%;
+	width: auto;
 	justify-content: space-between;
 	text-align: center;
 	margin: 30px auto 30px;

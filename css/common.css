@@ -35,11 +35,12 @@ body {
   background-position: center center;/*マス目の起点*/
   overflow-wrap: break-word;
   word-break: auto-phrase;
+overflow-x: auto;
 }
 
 main {
-	display: block;
-	min-width: 200px;
+	width: 100%;
+	min-width: 180px;
 	max-width: 1080px;
 	margin: auto;
 	padding-top: var(--header-height);
@@ -602,28 +603,11 @@ more リンク
    モーダルcss
    ========================================================================== */
 .modal-wrapper {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 999;
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
+	display: none;
+    position: fixed;
+    inset: 0;
 	padding: 40px 10px;
 	text-align: center;
-  }
-  
-  .modal-wrapper:not(:target) {
-	opacity: 0;
-	visibility: hidden;
-  }
-  
-  .modal-wrapper:target {
-	opacity: 1;
-	visibility: visible;
-	transition: opacity .4s, visibility .4s;
   }
   
   .modal-wrapper::after {
@@ -636,6 +620,11 @@ more リンク
 
     .modal-wrapper a:hover {
 	opacity: 1;
+  }
+
+  .modaal-inner-wrapper {
+	max-width: 95%;
+	padding: 80px 12px;
   }
 
 
@@ -696,7 +685,420 @@ more リンク
   }
 
 /*==================================================
-モーダル内ポートフォリオ詳細コンポーネント
+モーダル内ポートフォリオ詳細コンポーネント(phone)
+===================================*/
+.modaal-content-container {
+	padding: var(--sp-md);
+}
+
+/* 全体のフォント設定（指定のZen Maru Gothicなどを適用） */
+.modal-window {
+  font-family: var(--font-main);
+  color: var(--text-main);
+}
+
+/* タイトルと説明文の調整 */
+.modal_title {
+  font-size: var(--fs-xl);
+  font-weight: bold;
+  color: var(--text-main);
+  margin-bottom: var(--sp-sm);
+}
+
+.modal-content .bold {
+  font-size: var(--fs-l);
+  font-weight: bold;
+  color: var(--text-dark);
+  margin-top: var(--sp-sm);
+  margin-bottom: var(--sp-xs);
+}
+
+.modal-description {
+  font-size: var(--fs-md);
+  color: var(--text-main);
+  line-height: 1.6;
+  margin-bottom: var(--sp-md);
+}
+
+/* 🏢 2カラムのレイアウトベース */
+.p-modal-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-md);
+  width: 100%;
+  align-items: stretch;
+  padding-top: var(--sp-md);
+  border-top: 2px solid var(--bg-border);
+}
+
+/* 💻 左側：メインコンテンツ */
+.p-modal-main {
+  flex: 1;
+  min-width: 200px;
+}
+
+.p-modal-block {
+  padding-bottom: var(--sp-md);
+}
+
+/* 中央を区切る境界線 */
+.p-concept {
+  border-bottom: 2px solid var(--bg-border);
+  margin-bottom: var(--sp-md);
+}
+
+.p-heading {
+  font-size: var(--fs-l);
+  color: var(--text-dark);
+  margin-bottom: var(--sp-sm);
+  font-weight: bold;
+  text-align: start;
+}
+
+/* オレンジ丸のリスト（--primary-orangeを使用） */
+.p-bullet-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.p-bullet-list li {
+  position: relative;
+  padding-left: var(--sp-sm);
+  margin-bottom: var(--sp-xs);
+  font-size: var(--fs-md);
+  line-height: 1.6;
+}
+
+.p-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--sub-orange);
+  border-radius: 50%;
+}
+
+/* 実績アイテムの横並び設定 */
+.p-feature-item {
+  display: flex;
+  gap: var(--sp-sm);
+  margin-bottom: var(--sp-md);
+  align-items: flex-start;
+}
+
+.p-feature-item:last-child {
+  margin-bottom: 0;
+}
+
+.p-feature-text {
+  flex: 1;
+}
+
+.p-feature-text h4 {
+  font-size: var(--fs-l);
+  color: var(--primary-orange);
+  margin-bottom: var(--sp-xs);
+  font-weight: bold;
+  text-align: start;
+}
+
+.p-feature-text p {
+  font-size: var(--fs-md);
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* 右側画像ボックス（定義されたシャドウと角丸を適用） */
+.p-feature-img {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.p-feature-img img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--rd-sm);
+  box-shadow: var(--item-shadow);
+  display: block;
+}
+
+
+/* 📑 右側：制作データ（サイドバー） */
+.p-modal-sidebar {
+  width: 100%;
+  flex-shrink: 0;
+  background-color: var(--bg-border);
+  border-radius: var(--rd-md);
+  padding: var(--sp-sm);
+  /* 💡 念のため高さを親いっぱいに広げる指定を追加 */
+  height: 100%; 
+  box-sizing: border-box;
+}
+
+.p-meta-group,
+.p-modal-sidebar-bottom {
+  margin-bottom: var(--sp-sm);
+}
+
+.p-modal-sidebar-bottom {
+  margin-bottom: 0;
+}
+
+.p-modal-sidebar h3 {
+  font-size: var(--fs-md);
+  color: var(--accent-grey); 
+  margin-bottom: var(--sp-xs);
+  font-weight: bold;
+  text-align: start;
+}
+
+.p-modal-sidebar p {
+  font-size: var(--fs-sm);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* 担当領域内の詳細リスト調整 */
+.p-sidebar-sub-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: var(--sp-xs);
+}
+
+.p-sidebar-sub-list li {
+  font-size: var(--fs-sm);
+  position: relative;
+  padding-left: 12px;
+  line-height: 1.5;
+}
+
+.p-sidebar-sub-list li::before {
+  content: "・";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* パターン①（ul）の場合のCSS調整例 */
+.p-meta-list {
+  list-style: none;
+  padding-left: 0;
+  margin-0: 0;
+}
+
+.p-meta-item {
+  margin-bottom: var(--sp-sm); /* 16px相当の余白 */
+}
+
+.p-meta-item:last-child {
+  margin-bottom: 0;
+}
+
+.p-meta-item h3 {
+  font-size: var(--fs-md);
+  color: var(--accent-grey);
+  font-weight: bold;
+  margin-bottom: var(--sp-xs); /* 8px相当 */
+}
+
+.p-meta-item p {
+  font-size: var(--fs-sm);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+  .modal-overlay {
+	z-index: 10;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+  }
+  
+  .modal-wrapper .modal-close {
+	z-index: 20;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 35px;
+	color: var(--text-sub) !important;
+	font-size: var(--fs-xl);
+	font-weight: 700;
+	line-height: 35px;
+	text-align: center;
+	text-decoration: none;
+	text-indent: 0;
+  }
+  
+  .modal-wrapper .modal-close:hover {
+	color: #2b2e38 !important;
+  }
+  
+
+.modal-wrapper .modal-window {
+	box-sizing: border-box;
+	display: inline-block;
+	z-index: 20;
+	position: relative;
+	max-width: 90vw;
+	max-height: 90vh;
+	padding: 10px 30px 25px;
+	background: var(--white);
+	box-shadow: 0 0 30px rgba(0, 0, 0, .6);
+	border-radius: var(--rd-md);
+}
+
+.modal-wrapper .modal-window .modal-content {
+	max-height: 75vh;
+	max-width: 75vh;
+	overflow-y: auto;/*ブロックレベル要素の内容が上下の境界からあふれた場合どうするか*/
+	text-align: left;
+  }
+
+  /* Modaalコンテナに角丸を適用 */
+  .modaal-container {
+	border-radius: var(--rd-md);
+	overflow: hidden;
+  }
+  /* /.モーダルcss */
+
+}
+
+/******************************************/
+/******************************** tablet **/
+/******************************************/
+@media screen and  (min-width: 768px) , print{
+html {
+	font-size: 16px;
+}
+
+
+/*--------------------------------
+header
+---------------------------------*/
+#header-box ul {
+	margin: 8px var(--sp-md) auto auto;
+	display:flex;
+	flex-wrap:nowrap;
+	justify-content:space-between;
+	align-items: center;
+	font-size: var(--fs-md);
+}
+	
+#header-box ul li{
+	margin: 10px;
+	
+}
+/*hamberger-menuを表示させない*/
+#ham-box{
+	display:none;
+}
+
+.works-item {
+	grid-column: 6 span;/*分割されたうち、4つ*/
+	grid-row: 5 span;
+	margin-right: 5%;
+	margin-bottom: 40px;
+}
+/*==================================================
+more リンク
+===================================*/
+.more-box {
+	width: 200px;
+	height: 40px;
+	margin: auto;
+}
+
+/* ==========================================================================
+   モーダルcss
+   ========================================================================== */
+.modal-wrapper {
+	display: none;
+    position: fixed;
+    inset: 0;
+	padding: 40px 10px;
+	text-align: center;
+  }
+  
+  .modal-wrapper::after {
+	display: inline-block;
+	height: 100%;
+	margin-left: -.05em;
+	vertical-align: middle;
+	content: "";
+  }
+
+    .modal-wrapper a:hover {
+	opacity: 1;
+  }
+
+  .modaal-inner-wrapper {
+	max-width: 95%;
+	padding: 80px 12px;
+  }
+
+
+  .modal_title {
+	font-size: var(--fs-xl);
+	  font-weight: bold;
+	  position: relative;
+	padding: 0;
+	  margin: 10px 0;
+  }
+  
+  
+  .modal_title::before,
+  .modal_title::after{
+	  content: "";
+	  position: absolute;
+	  bottom: 0;
+  }
+	  
+	.modal-img-box{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: var(--sp-sm);
+		text-align: center;
+		margin: 10px;
+	}
+
+	.modal-img-box img{
+		width:auto;
+		max-height: 500px;
+	}
+
+	.modal-img-box iframe {
+		height: 350px;
+		width: 100%;
+	}
+
+  
+  .modal p{
+	  max-height:10vh;
+  }
+	  
+  
+  .modal-content p {
+	margin: 10px 0 10px 0;
+	max-width: 70vw;
+  }
+
+  .modal-content p a {
+	color: var(--text-dar);
+	font-size: var(--fs-md);
+	text-decoration: underline;
+  }
+  .modal-content p  a :hover {
+	opacity: 0.6;
+  }
+
+/*==================================================
+モーダル内ポートフォリオ詳細コンポーネント(phone)
 ===================================*/
 .modaal-content-container {
 	padding: var(--sp-md);
@@ -972,53 +1374,7 @@ more リンク
 	border-radius: var(--rd-md);
 	overflow: hidden;
   }
-
-}
-
-/******************************************/
-/******************************** tablet **/
-/******************************************/
-@media screen and  (min-width: 768px) , print{
-html {
-	font-size: 16px;
-}
-
-
-/*--------------------------------
-header
----------------------------------*/
-#header-box ul {
-	margin: 8px var(--sp-md) auto auto;
-	display:flex;
-	flex-wrap:nowrap;
-	justify-content:space-between;
-	align-items: center;
-	font-size: var(--fs-md);
-}
-	
-#header-box ul li{
-	margin: 10px;
-	
-}
-/*hamberger-menuを表示させない*/
-#ham-box{
-	display:none;
-}
-
-.works-item {
-	grid-column: 6 span;/*分割されたうち、4つ*/
-	grid-row: 5 span;
-	margin-right: 5%;
-	margin-bottom: 40px;
-}
-/*==================================================
-more リンク
-===================================*/
-.more-box {
-	width: 200px;
-	height: 40px;
-	margin: auto;
-}
+  /* /.モーダルcss */
 
 }
 
