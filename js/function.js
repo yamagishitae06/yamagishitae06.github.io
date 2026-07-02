@@ -159,7 +159,7 @@ $('.modal-button').click(function(e){
     $($(this).attr('href')).fadeIn();
 });
 
-$('.modal-close').click(function(e){
+$('.modaal-close').click(function(e){
     e.preventDefault();
     $(this).closest('.modal-wrapper').fadeOut();
 });

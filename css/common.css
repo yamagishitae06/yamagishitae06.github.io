@@ -35,7 +35,6 @@ body {
   background-position: center center;/*マス目の起点*/
   overflow-wrap: break-word;
   word-break: auto-phrase;
-overflow-x: auto;
 }
 
 main {
@@ -624,7 +623,6 @@ more リンク
 
   .modaal-inner-wrapper {
 	max-width: 95%;
-	padding: 80px 12px;
   }
 
 
@@ -918,23 +916,13 @@ more リンク
 	bottom: 0;
 	left: 0;
   }
-  
-  .modal-wrapper .modal-close {
-	z-index: 20;
-	position: absolute;
-	top: 5px;
-	right: 5px;
-	width: 35px;
-	color: var(--text-sub) !important;
-	font-size: var(--fs-xl);
-	font-weight: 700;
-	line-height: 35px;
-	text-align: center;
-	text-decoration: none;
-	text-indent: 0;
+
+  .modaal-wrapper .modaal-close {
+	background: rgba(0, 0, 0, 0.2);
   }
   
-  .modal-wrapper .modal-close:hover {
+  
+  .modal-wrapper .modaal-close:hover {
 	color: #2b2e38 !important;
   }
   
@@ -964,10 +952,15 @@ more リンク
 	border-radius: var(--rd-md);
 	overflow: hidden;
   }
-  /* /.モーダルcss */
+  
 
 }
 
+.modaal-close:focus:after, .modaal-close:focus:before, .modaal-close:hover:after, .modaal-close:hover:before {
+	background-color: #FFFFFF;
+	opacity: 0.2;
+}
+/* /.モーダルcss */
 /******************************************/
 /******************************** tablet **/
 /******************************************/
@@ -1037,8 +1030,7 @@ more リンク
   }
 
   .modaal-inner-wrapper {
-	max-width: 95%;
-	padding: 80px 12px;
+	max-width: 90%;
   }
 
 
@@ -1099,7 +1091,7 @@ more リンク
   }
 
 /*==================================================
-モーダル内ポートフォリオ詳細コンポーネント(phone)
+モーダル内ポートフォリオ詳細コンポーネント(tablet)
 ===================================*/
 .modaal-content-container {
 	padding: var(--sp-md);
@@ -1328,25 +1320,6 @@ more リンク
 	right: 0;
 	bottom: 0;
 	left: 0;
-  }
-  
-  .modal-wrapper .modal-close {
-	z-index: 20;
-	position: absolute;
-	top: 5px;
-	right: 5px;
-	width: 35px;
-	color: var(--text-sub) !important;
-	font-size: var(--fs-xl);
-	font-weight: 700;
-	line-height: 35px;
-	text-align: center;
-	text-decoration: none;
-	text-indent: 0;
-  }
-  
-  .modal-wrapper .modal-close:hover {
-	color: #2b2e38 !important;
   }
   
 
