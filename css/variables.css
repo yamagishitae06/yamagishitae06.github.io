@@ -32,13 +32,13 @@
 	--font-main: 'Zen Maru Gothic', sans-serif;;
 
 	/* --- Font Sizes --- */
-	--fs-sm:  0.8rem;  /* info */
-	--fs-md:  1.0rem;    /* body (基準) */
-	--fs-l:  1.2rem;    /* subtitle */
-	--fs-lg:  1.8rem;    /* step */
-	--fs-xl:  2.0rem;    /* title */
-	--fs-2xl: 2.4rem;    /* huge */
-	--fs-2xl: 3rem;
+	--fs-sm:  12px;  /* info */
+	--fs-md:  14px;    /* body (基準) */
+	--fs-l:  16px;    /* subtitle */
+	--fs-lg:  21px;    /* step */
+	--fs-xl:  24px;    /* title */
+	--fs-2xl: 26px;    /* huge */
+	--fs-2xl: 36px;
 
 	/* 6の倍数スケール */
 	--sp-xs: 6px;
@@ -66,6 +66,13 @@
 /******************************************/
 @media screen and (min-width: 768px) , print{
 	:root {
+		/* --- Font Sizes --- */
+		--fs-sm:  14px;  /* info */
+		--fs-md:  16px;    /* body (基準) */
+		--fs-l:  18px;    /* subtitle */
+		--fs-lg:  28px;    /* step */
+		--fs-xl:  32px;    /* title */
+		--fs-2xl: 42px;    /* huge */
 		/* 8の倍数スケール */
 		--sp-xs: 8px;
 		--sp-sm: 16px;
@@ -80,6 +87,13 @@
 
 @media screen and (max-width: 280px) , print{
 	:root {
+		/* --- Font Sizes --- */
+		--fs-sm:  14px;  /* info */
+		--fs-md:  16px;    /* body (基準) */
+		--fs-l:  18px;    /* subtitle */
+		--fs-lg:  28px;    /* step */
+		--fs-xl:  32px;    /* title */
+		--fs-2xl: 42px;    /* huge */
 		/* 2の倍数スケール */
 		--sp-xs: 2px;
 		--sp-sm: 4px;
