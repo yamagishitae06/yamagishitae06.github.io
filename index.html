@@ -13,9 +13,9 @@
 <!--共通CSS-->
     <link href="css/common.css" rel="stylesheet" type="text/css" />
 	  <link href="css/anime.css" rel="stylesheet" type="text/css" />
-    
 <!--独自CSS-->
     <link href="css/index.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/css/splide.min.css"/>
 <!--END CSS-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
  <!--font-->
@@ -75,8 +75,8 @@
           </div>
 			<div  class="first-txt">
 				<p class="first-txt">当サイトはTAEがポートフォリオ用に<br>
-<span class="bold">すべて個人で制作した</span>サイトです。<br><span class="mini">何か不備がありましたらご連絡ください。</span>
-</p>
+          <span class="bold">すべて個人で制作した</span>サイトです。<br><span class="mini">何か不備がありましたらご連絡ください。</span>
+        </p>
 				</div><!-- /#profile-card-->
         </div><!-- /box-->
         </section>
@@ -118,12 +118,37 @@
     </div>
     <p style="text-align: center; margin-bottom: var(--sp-lg);">
       デザイン、コーディング、イラストなど、<br class="br-sp">
-      様々なプロジェクトに携わった実績を掛載しています。
+      様々なプロジェクトに携わった実績を掲載しています。
     </p>
-    <div id="more" class="more-box">
-        <a href="works.html" class="more-link">
-        </a>
+    <div class="works-contents" id="worksContentsCard">
+        <div class="card-box" id="cardBox">
+          <div class="work-card _01">
+            <img src="img/card_img01.png">
+            <h4>Design</h4>
+          </div>
+          <div class="work-card _02">
+            <img src="img/illust_Vtuber01.png">
+            <h4>Illustration</h4>
+          </div>
+          <div class="work-card _03">
+            <img src="img/card_img01.png">
+            <h4>Web Design</h4>
+          </div>
+          <div class="work-card _04">
+            <img src="img/card_img01.png">
+            <h4>Web Development</h4>
+          </div>
+          <div class="work-card _05">
+            <img src="img/card_img01.png">
+            <h4>UI/UX Design</h4>
+          </div>
+        </div>
+    </div>
+    <div class="more-contents-wrap">
+      <div id="more" class="more-box">
+        <a href="works.html" class="more-link"></a>
       </div>
+    </div>
   </div>
 </section>
 <!-- /works -->
@@ -242,16 +267,16 @@
 <!--END footer-->
 <!--script-->
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
 <!--IE11用-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
 <!--自作のJS-->
 <script type="text/javascript" src="js/function.js"></script>
+<script type="text/javascript" src="js/cardSlider.js"></script>
 <!--END script-->
-
 </body>
 </html>

@@ -552,10 +552,10 @@ more リンク
 ===================================*/
 .more-box {
 	width: 200px;
+	max-width: 95%;
 	height: 40px;
 	margin: auto;
 }
-
 	
 .more-link {
   box-sizing: border-box;
@@ -1011,6 +1011,15 @@ header
 	margin-right: 5%;
 	margin-bottom: 40px;
 }
+/*==================================================
+more リンク
+===================================*/
+.more-box {
+	width: 200px;
+	height: 40px;
+	margin: auto;
+}
+
 }
 
 

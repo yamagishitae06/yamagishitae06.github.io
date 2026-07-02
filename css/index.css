@@ -239,6 +239,7 @@ phone profile
 ---------------------------------*/
 .works{
 	width:100%;
+	height: 800px;
 }
 
 	img{
@@ -253,41 +254,105 @@ phone profile
 	margin:0 auto;
 }
 
-/*個別グリッド*/
-#w01{
-	grid-column: 12 span;
-  grid-row: 2 span;
-}
-	
-//#w04{
-	grid-column-start:1 ;
-	grid-column-end: 6;
-  grid-row: 1 span;
-}
-	
-//#w05{grid-column-start:1 ;
-	grid-column-end: 6;
-  grid-row-start: 4;
-	grid-row-end: 5;
-}
-	
-	
-#w06{
-	grid-column:12 span;
-	grid-row: 2 span;
-	}
 
 #freelance-activity .more-link:before {
 content: "works";
 }
 
-/*==================================================
-phone モーダルcss
-===================================*/
 
-
-
-
+/* ===== 作品カードエリア ===== */
+.works-contents {
+  position: relative;
+  height: 250px;
+  /* 親要素(.contents-box width:90%)の中央寄せを無視して画面幅いっぱいに広げる */
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+ 
+  /* overflowではなくclip-pathを使うことで、
+     「横方向は要素の境界で厳密にクリップしつつ、縦方向は無制限」を実現する。
+     inset(vertical horizontal) の vertical に大きな負の値を与えることで
+     縦方向のクリップ面を画面外まで押し出し、実質無制限にしている。
+     （ドラッグでカードが .works-contents の高さを超えて上下に出られるようにするため） */
+  overflow: visible;
+  clip-path: inset(-9999px 0);
+  -webkit-clip-path: inset(-9999px 0);
+ 
+  touch-action: pan-y; /* 縦方向のページスクロールは許可。横方向はJSでドラッグとして奪う */
+}
+ 
+/* カードの位置決めの基準となるだけのコンテナ。
+   レイアウトはJSがカードごとにtransformで制御するため
+   flexは使わず、position:relativeのみ持たせる */
+.card-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+ 
+/* ===== カード ===== */
+.work-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 140px;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.06);
+  cursor: grab;
+  will-change: transform;
+  transform-origin: center center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none; /* ドラッグ操作はJS(Pointer Events)側で完全に制御する */
+  transition: box-shadow 0.2s ease; /* transformはJSが毎フレーム上書きするためtransitionをかけない */
+}
+ 
+.work-card.dragging {
+  cursor: grabbing;
+  z-index: 10;
+  box-shadow:
+    0 16px 28px rgba(0, 0, 0, 0.22),
+    0 4px 8px rgba(0, 0, 0, 0.1);
+}
+ 
+.work-thumb {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+ 
+.work-card .work-title {
+  padding: 6px 6px;
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: #1d1d1f;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+ 
+/* ===== もっと見るボタン ===== */
+.more-contents-wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+ 
+.more-box {
+  pointer-events: auto;
+}
 /*--------------------------------
 phone freelance-activity
 ---------------------------------*/
@@ -305,7 +370,7 @@ phone freelance-activity
 	/* 親要素の中央に配置するためのネガティブマージン（親が中央配置の場合） */
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-	margin-bottom: var(--sp-md);
+    margin-bottom: var(--sp-md);
     overflow: hidden; /* 全体の横揺れを防止 */
 }
 
@@ -440,6 +505,76 @@ phone contact
 
 }
 
+/******************************************/
+/***************************** tablet **/
+/******************************************/
+@media screen and (min-width: 768px) , print{
+	/* ===== 作品カード ===== */
+  .works-contents {
+    width: 100vw;
+  }
+ 
+  /* ===== カード ===== */
+  .work-card {
+    width: 150px;
+    height: 190px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow:
+      0 6px 16px rgba(0,0,0,0.12),
+      0 1px 2px rgba(0,0,0,0.06);
+    cursor: grab;
+    will-change: transform;
+    /* transform-originをカード中心に */
+    transform-origin: center center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+    z-index: -100;
+  }
+
+  .work-card.dragging {
+    cursor: grabbing;
+    box-shadow:
+      0 16px 28px rgba(0,0,0,0.22),
+      0 4px 8px rgba(0,0,0,0.10);
+  }
+  
+  .work-thumb {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+  }
+  
+  .work-card .work-title {
+    padding: 8px 10px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: #1d1d1f;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+  }
+  
+  /* ===== もっと見るボタン ===== */
+  .more-contents-wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+  }
+  
+  .more-box {
+    pointer-events: auto;
+  }
+
+}
+
 
 /******************************************/
 /***********************************  PC **/
@@ -501,32 +636,6 @@ phone contact
   font-size: var(--fs-sm);
   margin:10px 0;
 }
-
-/*個別グリッド*/
-#w01{
-	grid-column: 9 span;
-  grid-row: 2 span;
-}
-	
-#w04{
-	grid-column-start:1 ;
-	grid-column-end: 6;
-  grid-row: 1 span;
-}
-	
-#w05{grid-column-start:1 ;
-	grid-column-end: 6;
-  grid-row-start: 4;
-	grid-row-end: 5;
-}
-	
-	
-#w06{
-	grid-column-start:6 ;
-	grid-column-end: 13;
-	grid-row: 2 span;
-	}
-	
 	
 /*--------------------------------
 PC freelance-activity
