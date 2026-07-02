@@ -278,8 +278,9 @@
       const originalCards = Array.from(this.track.children);
       this.cardData = originalCards.map((el) => ({
         className: [...el.classList].find((c) => c !== 'work-card') || '',
-        imgSrc: el.querySelector('img')?.getAttribute('src') || '',
-        title: el.querySelector('h4')?.textContent || '',
+        imgSrc: el.querySelector('.work-thumb')?.getAttribute('src') || '',
+        imgAlt: el.querySelector('.work-thumb')?.getAttribute('alt') || '',
+        title: el.querySelector('.work-title')?.textContent || '',
       }));
       this.track.innerHTML = '';
     }
@@ -330,7 +331,7 @@
       const img = document.createElement('img');
       img.className = 'work-thumb';
       img.src = data.imgSrc;
-      img.alt = data.title;
+      img.alt = data.imgAlt || data.title;
       img.draggable = false;
 
       const title = document.createElement('h4');

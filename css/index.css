@@ -239,7 +239,10 @@ phone profile
 ---------------------------------*/
 .works{
 	width:100%;
-	height: 800px;
+}
+
+.works .contents-box {
+  pointer-events: auto;
 }
 
 	img{
@@ -297,8 +300,8 @@ content: "works";
   position: absolute;
   top: 0;
   left: 0;
-  width: 100px;
-  height: 140px;
+  width: 200px;
+  height: 170px;
   background: #ffffff;
   border-radius: 8px;
   overflow: hidden;
@@ -312,11 +315,20 @@ content: "works";
   -webkit-user-select: none;
   touch-action: none; /* ドラッグ操作はJS(Pointer Events)側で完全に制御する */
   transition: box-shadow 0.2s ease; /* transformはJSが毎フレーム上書きするためtransitionをかけない */
+  z-index: 10;
+  pointer-events: painted;
+}
+
+.work-card:hover {
+  scale: calc(1.1);
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, 0.18),
+    0 4px 8px rgba(0, 0, 0, 0.1);
 }
  
 .work-card.dragging {
   cursor: grabbing;
-  z-index: 10;
+  z-index: 100;
   box-shadow:
     0 16px 28px rgba(0, 0, 0, 0.22),
     0 4px 8px rgba(0, 0, 0, 0.1);
@@ -324,7 +336,7 @@ content: "works";
  
 .work-thumb {
   width: 100%;
-  height: 110px;
+  height: 170px;
   object-fit: cover;
   display: block;
   pointer-events: none;
@@ -516,21 +528,11 @@ phone contact
  
   /* ===== カード ===== */
   .work-card {
-    width: 150px;
-    height: 190px;
-    background: #ffffff;
-    border-radius: 8px;
+    width: 240px;
+    height: 200px;
     box-shadow:
       0 6px 16px rgba(0,0,0,0.12),
       0 1px 2px rgba(0,0,0,0.06);
-    cursor: grab;
-    will-change: transform;
-    /* transform-originをカード中心に */
-    transform-origin: center center;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: none;
-    z-index: -100;
   }
 
   .work-card.dragging {
@@ -550,7 +552,7 @@ phone contact
   }
   
   .work-card .work-title {
-    padding: 8px 10px;
+    padding: 6px 10px;
     margin: 0;
     font-size: 12px;
     font-weight: 500;
