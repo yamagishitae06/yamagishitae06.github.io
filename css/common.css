@@ -35,6 +35,7 @@ body {
   background-position: center center;/*マス目の起点*/
   overflow-wrap: break-word;
   word-break: auto-phrase;
+overflow-x: auto;
 }
 
 main {
