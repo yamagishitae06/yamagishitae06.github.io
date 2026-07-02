@@ -336,7 +336,7 @@ content: "works";
  
 .work-thumb {
   width: 100%;
-  height: 170px;
+  height: 140px;
   object-fit: cover;
   display: block;
   pointer-events: none;

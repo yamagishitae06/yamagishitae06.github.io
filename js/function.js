@@ -153,11 +153,13 @@ $(window).scroll(function () {
 /*==================================================
 モーダル
 ===================================*/
-$(function () {
-  $('#openModal').click(function(){
-      $('#modalArea').fadeIn();
-  });
-  $('#closeModal , #modalBg').click(function(){
-    $('#modalArea').fadeOut();
-  });
+
+$('.modal-button').click(function(e){
+    e.preventDefault();
+    $($(this).attr('href')).fadeIn();
+});
+
+$('.modal-close').click(function(e){
+    e.preventDefault();
+    $(this).closest('.modal-wrapper').fadeOut();
 });
