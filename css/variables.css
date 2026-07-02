@@ -85,7 +85,7 @@
 	}
 }
 
-@media screen and (max-width: 280px) , print{
+@media screen and  (min-width: 1024px) , print{
 	:root {
 		/* --- Font Sizes --- */
 		--fs-sm:  14px;  /* info */
