@@ -76,7 +76,6 @@ phone profile
   background-color: var(--white);
   box-shadow: var(--item-shadow);
   border-radius: var(--rd-md);
-  overflow: hidden;
 }
 
 .profile-card img{
