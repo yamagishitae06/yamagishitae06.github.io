@@ -273,10 +273,54 @@ margin: 100px auto 0;
 width: 250px;
 }
 
-#profile-freelance-activity ul {
-	list-style: circle;
-	padding-left: 20px;
-	padding-bottom: var(--sp-xs);
+.work-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.skill-category {
+  padding-bottom: 8px;
+}
+
+.category-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #444;
+  text-align: start;
+}
+
+.skill-category ul {
+  margin: 0;
+  padding-left: 27px;
+  list-style: circle;
+  padding-bottom: var(--sp-xs);
+}
+
+.sub-list {
+  margin-top: 4px;
+  padding-left: 1.4em;
+  color: #666;
+  font-size: 0.95em;
+}
+
+.sub-list li {
+  list-style-type: "- ";
+  margin-bottom: 2px;
+}
+
+.badge {
+  display: inline-block;
+  background: #fff3e6;
+  border: 1px solid #ff8c42;
+  border-radius: 20px;
+  padding: 2px 12px;
+  font-size: 0.9em;
+}
+
+.bold.orange {
+  color: #ff8c42;
+  font-weight: bold;
 }
 
 
