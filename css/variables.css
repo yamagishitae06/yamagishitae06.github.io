@@ -33,12 +33,11 @@
 
 	/* --- Font Sizes --- */
 	--fs-sm:  12px;  /* info */
-	--fs-md:  14px;    /* body (基準) */
-	--fs-l:  16px;    /* subtitle */
-	--fs-lg:  21px;    /* step */
-	--fs-xl:  24px;    /* title */
-	--fs-2xl: 26px;    /* huge */
-	--fs-2xl: 36px;
+	--fs-md:  16px;    /* body (基準) */
+	--fs-l:  18px;    /* subtitle */
+	--fs-lg:  24px;    /* step */
+	--fs-xl:  28px;    /* title */
+	--fs-2xl: 42px;    /* huge */
 
 	/* 6の倍数スケール */
 	--sp-xs: 6px;
@@ -69,10 +68,10 @@
 		/* --- Font Sizes --- */
 		--fs-sm:  14px;  /* info */
 		--fs-md:  16px;    /* body (基準) */
-		--fs-l:  18px;    /* subtitle */
+		--fs-l:  20px;    /* subtitle */
 		--fs-lg:  28px;    /* step */
 		--fs-xl:  32px;    /* title */
-		--fs-2xl: 42px;    /* huge */
+		--fs-2xl: 46px;    /* huge */
 		/* 8の倍数スケール */
 		--sp-xs: 8px;
 		--sp-sm: 16px;
@@ -93,7 +92,7 @@
 		--fs-l:  18px;    /* subtitle */
 		--fs-lg:  28px;    /* step */
 		--fs-xl:  32px;    /* title */
-		--fs-2xl: 42px;    /* huge */
+		--fs-2xl: 52px;    /* huge */
 		/* 2の倍数スケール */
 		--sp-xs: 8px;
 		--sp-sm: 12px;

@@ -155,6 +155,9 @@ h5{
 
 
 section {
+	box-sizing: border-box;
+	padding-left: var(--sp-md);
+	padding-right: var(--sp-md);
 	padding-bottom: var(--sp-2xl);
 	margin-bottom: 25vh;
 }

@@ -3,7 +3,7 @@
 /* CSS Document */
 
 body {
-	overflow-x: auto;
+	overflow-x: hidden;
 }
 
 .modal-img-box p{
@@ -37,6 +37,14 @@ body {
 /*--------------------------------
  phone Works
 ---------------------------------*/
+.title-group p {
+	padding-top: var(--sp-xs);
+	text-align: start;
+	max-width: 400px;
+	margin: 0 auto;
+	color: var(--text-sub);
+}
+
 .works {
 	width:100%;
 	padding-bottom: 0;
