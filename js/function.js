@@ -19,10 +19,6 @@ $(function () {
  
  // タイマー処理
   $(window).on('load', function () {
-  // 処理①ページを開いて0.8秒後にアニメーション表示（フェード時間0.4秒）
-  setTimeout(function () {
-    show_load();
-  }, 800)
   // 処理②ページを開いて4秒後にテキスト表示（フェード時間0.4秒）
   setTimeout(function () {
     show_txt();
