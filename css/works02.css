@@ -37,8 +37,10 @@ body {
 /*--------------------------------
  phone Works
 ---------------------------------*/
-.works{
+.works {
 	width:100%;
+	padding-bottom: 0;
+	margin-bottom: 0;
 }
 
 .gnavi-wrap {
@@ -73,7 +75,7 @@ body {
 	flex-wrap: wrap;
 	justify-content: space-between;
 	text-align: center;
-	gap: var(--sp-xs);
+	gap: var(--sp-sm);
 	padding: 0 var(--sp-xs);
 }
 	
@@ -131,7 +133,11 @@ body {
 /******************************************/
 /*********************************** tablet **/
 /******************************************/
-@media screen and (min-width: 1024px) , print{
+@media screen and (min-width: 768px) , print{
+	.works {
+		padding-bottom: 0;
+		margin-bottom: 0;
+	}
 }
 
 /******************************************/

@@ -601,7 +601,11 @@ more リンク
 /* ==========================================================================
    モーダルcss
    ========================================================================== */
-.modal-wrapper {
+.modaal-wrapper {
+	width: 100vw;
+}
+
+   .modal-wrapper {
 	display: none;
     position: fixed;
     inset: 0;
@@ -825,7 +829,6 @@ more リンク
 /* 📑 右側：制作データ（サイドバー） */
 .p-modal-sidebar {
   width: 100%;
-  min-width: 240px;
   flex-shrink: 0;
   background-color: var(--bg-border);
   border-radius: var(--rd-md);
@@ -1229,7 +1232,7 @@ more リンク
 
 /* 📑 右側：制作データ（サイドバー） */
 .p-modal-sidebar {
-  width: 240px;
+  max-width: 120px;
   flex-shrink: 0;
   background-color: var(--bg-border);
   border-radius: var(--rd-md);

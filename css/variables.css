@@ -95,13 +95,13 @@
 		--fs-xl:  32px;    /* title */
 		--fs-2xl: 42px;    /* huge */
 		/* 2の倍数スケール */
-		--sp-xs: 2px;
-		--sp-sm: 4px;
-		--sp-md: 6px;
-		--sp-lg: 8px;
-		--sp-xl: 10px;
-		--sp-2xl: 12px;
-		--sp-3xl: 14px;
-		--sp-4xl: 16px;
+		--sp-xs: 8px;
+		--sp-sm: 12px;
+		--sp-md: 18px;
+		--sp-lg: 24px; 
+		--sp-xl: 30px;
+		--sp-2xl: 36px; 
+		--sp-3xl: 42px; 
+		--sp-4xl: 48px; 
 	}
 }
