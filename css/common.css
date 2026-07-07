@@ -22,7 +22,7 @@ html{
 
 body {
 	height:100%;
-	width:100vw;
+	width:100%;
 	font-family: var(--font-main);
 	line-height: 1.5;
 	color:var(--text-main);
@@ -138,9 +138,9 @@ h5{
 	opacity: 1;
 }
 
-/*--------------------------------
- レイアウト
----------------------------------*/
+/* ==========================================================================
+   レイアウト
+   ========================================================================== */
 .bold{
 	font-weight: bold;
 }
@@ -177,16 +177,144 @@ background:linear-gradient(transparent 70%, var
 background:linear-gradient(transparent 70%, var(--accent-yellow) 70%);
 }
 
-/*--------------------------------
-/レイアウト
----------------------------------*/
+/* ==========================================================================
+   header
+   ========================================================================== */
+header {  
+	position: fixed;
+	top:0;
+	left: 0;
+	margin: 0;
+	width: 100%;
+	height: var(--header-height);
+	background-color: var(--white);
+	z-index: 500;
+}
+
+#header-box {
+	display:flex;
+	flex-wrap:nowrap;
+	height: 100%;
+}
+
+#header-box .HOME {
+	margin:15px auto 0 2rem;
+	font-size: var(--fs-l);
+}
+
+#header-box ul {
+	display:none;
+}
+
+/******hamberger-menu******/
+#hamburger{
+	position:absolute;
+	top:15px;
+	right:20px;
+	width:28px;
+	height:20px;
+	cursor:pointer;
+}
+
+/*lineの設定*/
+.inner_line{
+	display:block;
+	position:absolute;
+	left:0;
+	width:28px;/*線幅_基本hambergerと同じ*/
+	height:3px;/*線の太さ*/
+	background-color: var(--text-black);
+	border-radius:4px;
+	transition:0.5s;
+	z-index:9999;
+}
+
+#line1{
+	top:0;
+}
+
+#line2{
+	top:9px;
+}
+
+#line3{
+	bottom:0;
+}
+
+	
+/*クリック後_x印*/
+.line_1,.line_2,.line_3{
+	background-color: var(--text-black);
+}
+
+.line_1{
+	transform:rotate(-45deg);
+	margin-top:10px;
+	top:0;
+}
+
+.line_2{
+	opacity:0;
+}
+
+.line_3{
+	transform:rotate(45deg);
+	bottom:0;
+	margin-bottom:7px;
+}
+	
+
+/*nav(menu)*/
+nav{
+  width: 100vw;
+  height: 100vh;
+  position:absolute;
+  top: 0;
+  right: -100%; /** ナビメニューを右に移動し隠した状態になる **/background-color: rgba(255, 255, 255, 0.8);/*背景のみ透明にする*/
+/** ０.7秒かけてナビメニューがスライドする **/
+  transition: 0.7s;
+  visibility: hidden; 
+  opacity: 0;
+}
+
+nav ul{
+	display:flex;
+	justify-content: space-between;
+	width: 70%;
+	margin: 0 auto;
+	padding-top: 10vh;
+}
+	
+nav li a{
+transition: all  0.3s ease;/*ふわっとさせる間隔*/
+font-size: var(--fs-md);
+font-weight:bold;
+cursor: pointer;/*ホバー時にカーソルの形状をポインターに*/
+	display:block;
+	text-decoration:none;
+	color: var(--text-black);
+	margin: 0 15px;
+	writing-mode:vertical-rl;
+	text-orientation:upright;
+
+}
+
+/*navスライドの移動*/
+.in{
+	transform:translateX(-100%);
+	visibility: visible;
+	opacity: 1;
+}
+
+/* ==========================================================================
+   main
+   ========================================================================== */
 /*図形*/
 .shape-container {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
-
 
 .shape{
 	animation:rotation 15s linear infinite;
@@ -336,8 +464,15 @@ background:linear-gradient(transparent 70%, var(--accent-yellow) 70%);
 }
 
 /*--------------------------------
-item
+main-box
 ---------------------------------*/
+.main-box {
+	width: 100%;
+}
+
+/*----
+item
+-----*/
 .item {
 	display: flex;
 	flex-direction: column;
@@ -348,157 +483,6 @@ item
 	padding:16px;
 	border-radius: 8px;
 	gap:0;
-}
-
-/*--------------------------------
-header
----------------------------------*/
-header {  
-	position: fixed;
-	top:0;
-	left: 0;
-	margin: 0;
-	width: 100%;
-	height: var(--header-height);
-	background-color: var(--white);
-	z-index: 500;
-}
-
-#header-box {
-	display:flex;
-	flex-wrap:nowrap;
-	height: 100%;
-}
-
-#header-box .HOME {
-	margin:15px auto 0 2rem;
-	font-size: var(--fs-l);
-}
-
-#header-box ul {
-	display:none;
-}
-
-/******hamberger-menu******/
-#hamburger{
-	position:absolute;
-	top:15px;
-	right:20px;
-	width:28px;
-	height:20px;
-	cursor:pointer;
-}
-
-/*lineの設定*/
-.inner_line{
-	display:block;
-	position:absolute;
-	left:0;
-	width:28px;/*線幅_基本hambergerと同じ*/
-	height:3px;/*線の太さ*/
-	background-color: var(--text-black);
-	border-radius:4px;
-	transition:0.5s;
-	z-index:9999;
-}
-
-#line1{
-	top:0;
-}
-
-#line2{
-	top:9px;
-}
-
-#line3{
-	bottom:0;
-}
-
-	
-/*クリック後_x印*/
-.line_1,.line_2,.line_3{
-	background-color: var(--text-black);
-}
-
-.line_1{
-	transform:rotate(-45deg);
-	margin-top:10px;
-	top:0;
-}
-
-.line_2{
-	opacity:0;
-}
-
-.line_3{
-	transform:rotate(45deg);
-	bottom:0;
-	margin-bottom:7px;
-}
-	
-
-/*nav(menu)*/
-nav{
-  width: 100vw;
-  height: 100vh;
-  position:absolute;
-  top: 0;
-  right: -100%; /** ナビメニューを右に移動し隠した状態になる **/background-color: rgba(255, 255, 255, 0.8);/*背景のみ透明にする*/
-/** ０.7秒かけてナビメニューがスライドする **/
-  transition: 0.7s;
-  visibility: hidden; 
-  opacity: 0;
-}
-
-nav ul{
-	display:flex;
-	justify-content: space-between;
-	width: 70%;
-	margin: 0 auto;
-	padding-top: 10vh;
-}
-	
-nav li a{
-transition: all  0.3s ease;/*ふわっとさせる間隔*/
-font-size: var(--fs-md);
-font-weight:bold;
-cursor: pointer;/*ホバー時にカーソルの形状をポインターに*/
-	display:block;
-	text-decoration:none;
-	color: var(--text-black);
-	margin: 0 15px;
-	writing-mode:vertical-rl;
-	text-orientation:upright;
-
-}
-
-/*navスライドの移動*/
-.in{
-	transform:translateX(-100%);
-	visibility: visible;
-	opacity: 1;
-}
-
-/*--------------------------------
-footer
----------------------------------*/
-footer{  
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 40px;
-	background-color:var(--bg-grey);
-	margin-top: var(--sp-2xl); 
-	margin-bottom: 0;
-}
-
-#footer-box{
-	font-size: var(--fs-sm);
-	font-weight:600;
-	text-align: center;
-	margin:auto;
-	position:relative;
 }
 
 /*--------------------------------
@@ -546,6 +530,7 @@ works-item
   font-size: var(--fs-md);
   margin:10px 0;
 }
+
 
 /*==================================================
 more リンク
@@ -954,15 +939,34 @@ more リンク
 	border-radius: var(--rd-md);
 	overflow: hidden;
   }
-  
-
-}
 
 .modaal-close:focus:after, .modaal-close:focus:before, .modaal-close:hover:after, .modaal-close:hover:before {
 	background-color: #FFFFFF;
 	opacity: 0.2;
 }
-/* /.モーダルcss */
+
+/* ==========================================================================
+   footer
+   ========================================================================== */
+footer{  
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 40px;
+	background-color:var(--bg-grey);
+	margin-top: var(--sp-2xl); 
+	margin-bottom: 0;
+}
+
+#footer-box{
+	font-size: var(--fs-sm);
+	font-weight:600;
+	text-align: center;
+	margin:auto;
+	position:relative;
+}
+}
 /******************************************/
 /******************************** tablet **/
 /******************************************/
