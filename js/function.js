@@ -23,7 +23,7 @@ $(function () {
   setTimeout(function () {
     show_txt();
   }, 4000)
-　// 処理③ページを開いて4秒後にアニメーション非表示（フェード時間1秒）
+  // 処理③ページを開いて4秒後にアニメーション非表示（フェード時間1秒）
   setTimeout(function () {
     hide_txt();
   }, 1000)
@@ -89,7 +89,7 @@ $(function(){
 });
 
 
-/*humburger*/
+/*hamburger*/
 // $(document)に対してイベントを貼り、中にある #hamburger を監視する書き方に変更
 //hamburgerという関数を宣言します。
 $(document).on('click', '#hamburger', function(){
@@ -99,30 +99,27 @@ $(document).on('click', '#hamburger', function(){
 	$('nav').toggleClass('in');
     });
 
-jQuery(window).on('scroll', function () {
-    if (525< jQuery(this).scrollTop()) {
-        jQuery('#head_logo').addClass('change-color');
-    } else {
-        jQuery('#head_logo').removeClass('change-color');
-    }
-});
-
+//ヘッダーロゴの色をスクロール位置で切り替える
+function updateHeaderColor() {
+  if ($(window).scrollTop() > 525) {
+    $('#head_logo').addClass('change-color');
+  } else {
+    $('#head_logo').removeClass('change-color');
+  }
+}
 
 //スクロールで文字がふわっと出る
-$('.fuwa-animation').css('visibility','hidden');
-$(window).scroll(function(){
- var windowHeight = $(window).height(),
-     topWindow = $(window).scrollTop();
- $('.fuwa-animation').each(function(){
-  var targetPosition = $(this).offset().top;
-  if(topWindow > targetPosition - windowHeight + 100){
-   $(this).addClass("fadeInDown");
-  }
- });
-});
-
-
-
+$('.fuwa-animation').css('visibility', 'hidden');
+function updateFuwaAnimation() {
+  var windowHeight = $(window).height();
+  var topWindow = $(window).scrollTop();
+  $('.fuwa-animation').each(function () {
+    var targetPosition = $(this).offset().top;
+    if (topWindow > targetPosition - windowHeight + 100) {
+      $(this).addClass('fadeInDown');
+    }
+  });
+}
 
 // eachTextAnimeにappeartextというクラス名を付ける定義
 function EachTextAnimeControl() {
@@ -132,17 +129,18 @@ function EachTextAnimeControl() {
     var windowHeight = $(window).height();
     if (scroll >= elemPos - windowHeight) {
       $(this).addClass("appeartext");
-
     } else {
       $(this).removeClass("appeartext");
     }
   });
 }
 
-// 画面をスクロールをしたら動かしたい場合の記述
-$(window).scroll(function () {
-  EachTextAnimeControl();/* アニメーション用の関数を呼ぶ*/
-});// ここまで画面をスクロールをしたら動かしたい場合の記述
+// 画面をスクロールしたらまとめて実行する
+$(window).on('scroll', function () {
+  updateHeaderColor();
+  updateFuwaAnimation();
+  EachTextAnimeControl();
+});
 
 
 

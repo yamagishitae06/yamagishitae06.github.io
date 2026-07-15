@@ -441,7 +441,7 @@
      * 描画フェーズ（DOM書き込みのみ）
      * 各カードの位置は baseOffset + scrollOffset をモジュロ演算で
      * trackWidth内に周回させることで求める。
-     * cloneNode/appendChillによる複製や、scrollWidthの半分でリセットする
+     * cloneNode/appendChildによる複製や、scrollWidthの半分でリセットする
      * ような処理は行わず、純粋な位置計算のみでループを実現している。
      */
     _render() {

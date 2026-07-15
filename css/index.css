@@ -160,7 +160,7 @@ phone profile
 	display:grid;
 	padding:3%;
 	grid-template-columns:repeat(12, 1fr); /*グリッドの分割数、幅*/
-	grid-template-rows:repeat 500px ; 
+	grid-auto-rows: 500px;
 	margin:0 auto;
 }
 
@@ -531,7 +531,7 @@ phone contact
 	display:grid;
 	padding:3%;
 	grid-template-columns:repeat(12, 1fr); /*グリッドの分割数、幅*/
-	grid-template-rows:repeat 500px ; 
+	grid-auto-rows: 500px;
 	margin:0 auto;
 }
 
