@@ -227,7 +227,7 @@ profile
 	z-index: 10;
 }
 
-section.profile .pr:last-child {
+section.career .pr:last-child {
 	border: solid 4px var(--primary-orange);/*線*/
 }
 
@@ -636,7 +636,7 @@ margin: 10px;
 	gap: 20px;
 }
 
-section.profile .pr:last-child {
+section.career .pr:last-child {
 	width: 90%;
 	max-width: 1080px;
 }

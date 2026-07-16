@@ -87,6 +87,28 @@ h5{
 	text-align: center;
 }
 
+/* 見た目を変えずに見出し階層だけ補うための視覚的に隠すクラス */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* 旧h5相当の見た目を、正しい見出しレベルのタグにも適用するためのクラス */
+.subtitle-plain {
+	font-size: var(--fs-md);
+	font-weight: 500;
+	margin-bottom: 10px;
+	text-align: center;
+	color: var(--text-main);
+}
+
 
 /******カーソル要素******/
 #cursor{
